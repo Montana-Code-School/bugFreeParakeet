@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import '../css/ApiTest.css';
 
 export default class ApiTest extends Component {
   constructor(props) {
@@ -37,12 +36,6 @@ export default class ApiTest extends Component {
         <div className="App-header">
           <h2>Welcome to React</h2>
         </div>
-        <p className="App-intro">
-          {'This is '}
-          <a href="https://github.com/mars/heroku-cra-node">
-            {'create-react-app with a custom Node/Express server'}
-          </a><br/>
-        </p>
         <p className="App-intro">
           {this.state.fetching
             ? 'Fetching message from API'

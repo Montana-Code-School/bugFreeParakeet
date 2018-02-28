@@ -1,0 +1,14 @@
+body {
+background-color: black;
+color: white;
+text-align: center;
+}
+.header {
+  font-size: 72px;
+}
+.labels {
+  font-size: 25px;
+}
+.buttons {
+  font-size: 15px;
+}

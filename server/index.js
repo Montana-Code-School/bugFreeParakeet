@@ -23,7 +23,7 @@ if (cluster.isMaster) {
 } else {
   const app = express();
   mongoose.Promise = require('bluebird');
-  const Bear = require('../models/Bear');
+  const Stuff = require('../models/stuff.js');
   const router = express.Router();
 
   // Priority serve any static files.
@@ -38,7 +38,7 @@ if (cluster.isMaster) {
   // check to see I if I need this...
 
   // connect to database
-  mongoose.connection.openUri('mongodb://localhost/bears');
+  mongoose.connection.openUri('mongodb://localhost/stuff');
 
   // Answer API requests.
   app.get('/api', function (req, res) {
@@ -51,65 +51,77 @@ if (cluster.isMaster) {
     next();
   })
 
-  router.get('/', function(req, res) {
-    res.json({ message: "Hello, welcome to our api!"})
-  })
-
-  router.route('/bears')
-
-    .post(function(req, res){
-      var bear = new Bear();
-      bear.name = req.body.name;
-
-      bear.save(function(err) {
-          if(err)
-            res.send(err);
-          res.json({ message: "Bear is made, now is new Bear." })
-        })
-      })
-
-
-    .get(function(req, res){
-      Bear.find(function(err, bears){
-        if(err)
-          res.send(err)
-        res.json(bears)
-      })
-    })
-
-  router.route('/bears/:bear_id')
-
-    .get(function(req, res){
-      Bear.findById(req.params.bear_id, function(err, bear){
-        if(err)
+  router.get('/', (req, res) => {
+    res.json({
+      message: 'I did it!'
+    });
+  });
+  router.route('/stuff')
+    .post(({body}, res) => {
+      const stuff = new Stuff();
+      stuff.storyPremise = body.storyPremise;
+      stuff.optionOne = body.optionOne;
+      stuff.optionTwo = body.optionTwo;
+      stuff.save(err => {
+        if (err)
           res.send(err);
-        res.json(bear)
+        res.json({
+          message: 'Posted things!'
+        });
       });
     })
+    .get((req, res) => {
+    console.log("it works");
+    Stuff.find((err, stuff) => {
+      console.log(err);
+      if (err)
+        res.send(err);
 
-    .put(function(req,res){
-      Bear.findById(req.params.bear_id, function(err, bear){
-        if(err)
+      res.json(stuff);
+    });
+  });
+  router.route('/stuff/:stuff_id')
+
+    .get(({params}, res) => {
+      Stuff.findById(params.stuff_id, (err, stuff) => {
+        if (err)
           res.send(err);
-        bear.name = req.body.name;
-
-        bear.save(function(err) {
-          if(err)
-            res.send(err);
-          res.json({ message: "Bear was saved very good" })
-        })
-      })
+        res.json(stuff);
+      });
     })
+    .put(({params, body}, res) => {
 
-    .delete(function(req, res){
-      Bear.remove({
-        _id: req.params.bear_id
-      }, function(err, bear) {
-        if(err)
+    Stuff.findById(params.stuff_id, (err, stuff) => {
+
+      if (err)
+        res.send(err);
+
+        stuff.storyPremise = body.storyPremise;
+        stuff.optionOne = body.optionOne;
+        stuff.optionTwo = body.optionTwo;
+      stuff.save(err => {
+        if (err)
           res.send(err);
-          res.json({ message: "Now is dead bear."});
+
+        res.json({
+          message: 'Stuff updated!'
+        });
       });
     });
+  })
+
+  .delete(({params}, res) => {
+    Stuff.remove({
+      _id: params.stuff_id
+    }, (err, stuff) => {
+      if (err)
+        res.send(err);
+
+      res.json({
+        message: 'Successfully stuffed'
+      });
+    });
+  });
 
   app.use('/api', router);
 
