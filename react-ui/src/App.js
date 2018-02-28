@@ -3,6 +3,7 @@ import './App.css';
 import Login from './components/Login.js';
 import StorySubmit from './components/Submit.js';
 import ApiTest from './components/ApiTest';
+import ScrewyTest from './components/screwyTest.js';
 
 class App extends Component {
   render() {
@@ -10,6 +11,7 @@ class App extends Component {
       <div>
         <StorySubmit />
         <ApiTest />
+        <ScrewyTest />
       </div>
     );
   }

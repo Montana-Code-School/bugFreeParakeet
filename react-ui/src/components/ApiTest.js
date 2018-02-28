@@ -34,7 +34,7 @@ export default class ApiTest extends Component {
     return (
       <div className="App">
         <div className="App-header">
-          <h2>Welcome to React</h2>
+          <h2>Welcome to Your Story</h2>
         </div>
         <p className="App-intro">
           {this.state.fetching
