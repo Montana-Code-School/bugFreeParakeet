@@ -8,7 +8,7 @@ export default class ScrewyTest extends Component {
     };
   }
   componentDidMount(){
-    fetch('http://localhost:5000/api/stuff/')
+    fetch('https://bugfreeparakeet.herokuapp.com/api/stuff')
     .then(results => {
       return results.json();
     }).then(data => {
