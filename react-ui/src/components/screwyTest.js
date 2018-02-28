@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-
+const pathName = process.env.PATHNAME || 'http://localhost:5000/'
+//https://bugfreeparakeet.herokuapp.com/
 export default class ScrewyTest extends Component {
   constructor(){
     super();
@@ -8,7 +9,7 @@ export default class ScrewyTest extends Component {
     };
   }
   componentDidMount(){
-    fetch('https://bugfreeparakeet.herokuapp.com/api/stuff')
+    fetch(`${pathName}api/stuff`)
     .then(results => {
       return results.json();
     }).then(data => {
