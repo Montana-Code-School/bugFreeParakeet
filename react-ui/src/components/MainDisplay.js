@@ -11,6 +11,7 @@ export default class MainDisplay extends Component {
     }
   }
   componentDidMount() {
+    let space = "    ";
     fetch(`/api/stuff`)
     .then(results => {
       return results.json();
@@ -18,9 +19,9 @@ export default class MainDisplay extends Component {
       let displayText = data.map((stuff) => {
         return(
           <div key={stuff.results}>
-            <h1>{stuff.storyPremise}</h1>
-            <p onClick={(e) => this.onClick(e)}>{stuff.optionOne}</p>
-            <p onClick={(e) => this.onClick(e)}>{stuff.optionTwo}</p>
+            <p id="premiseText"> {stuff.storyPremise}</p>
+            <p className="mainDisplayOptionText" id="mainDisplayOptionOne" onClick={(e) => this.onClick(e)}>{stuff.optionOne}</p>
+            <p className="mainDisplayOptionText" id="mainDisplayOptionTwo" onClick={(e) => this.onClick(e)}>{stuff.optionTwo}</p>
           </div>
         )
       })
@@ -28,7 +29,11 @@ export default class MainDisplay extends Component {
     })
   }
   onClick(e) {
-    console.log("it works");
+    if (e.target.id == 'mainDisplayOptionOne') {
+      console.log("option one works")
+    } else if (e.target.id == 'mainDisplayOptionTwo') {
+      console.log("option two works")
+    }
   }
   render () {
     return (
