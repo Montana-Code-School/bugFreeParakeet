@@ -21,7 +21,6 @@ export default class ScrewyTest extends Component {
         )
       })
       this.setState({story:story});
-      console.log("state", this.state.story);
     })
   }
   render(){
