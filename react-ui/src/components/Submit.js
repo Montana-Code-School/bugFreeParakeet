@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
 
-
 class StorySubmit extends Component {
   constructor(props){
     super(props);
     this.state = {
-      optionsBox:"",
-      premiseBox:"",
+      optionsBox:"", //value to be set equal to user submission in optionsBox
+      premiseBox:"", //value to be set equal to user submission in premiseBox
     }
   }
   onClick(e){

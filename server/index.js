@@ -66,6 +66,7 @@ if (cluster.isMaster) {
       stuff.storyPremise = body.storyPremise;
       stuff.optionOne = body.optionOne;
       stuff.optionTwo = body.optionTwo;
+      stuff.keyValue = body.keyValue;
       stuff.save(err => {
         if (err)
           res.send(err);
@@ -103,6 +104,7 @@ if (cluster.isMaster) {
         stuff.storyPremise = body.storyPremise;
         stuff.optionOne = body.optionOne;
         stuff.optionTwo = body.optionTwo;
+        stuff.keyValue = body.keyValue;
       stuff.save(err => {
         if (err)
           res.send(err);
