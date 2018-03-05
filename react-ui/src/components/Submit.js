@@ -8,6 +8,7 @@ class StorySubmit extends Component {
       optionsBox:"", //value to be set equal to user submission in optionsBox
       premiseBox:"", //value to be set equal to user submission in premiseBox
     }
+    // let variable = previousOption = keyValueofpreviousOption;
   }
   onClick(e){
     console.log("its working " + this.state.premiseBox + this.state.optionsBox)
@@ -20,11 +21,12 @@ class StorySubmit extends Component {
       body: JSON.stringify ({
         storyPremise: this.state.premiseBox,
         optionOne: this.state.optionsBox,
+        // keyValue: variable + "1",
       })
     })
     this.setState({
       premiseBox: "",
-      optionsBox: ""
+      optionsBox: "",
     })
   }
 

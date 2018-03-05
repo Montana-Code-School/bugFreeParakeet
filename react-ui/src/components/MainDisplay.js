@@ -9,6 +9,7 @@ export default class MainDisplay extends Component {
     premise:"", //intro premise to be pulled from current api object
     option1:"", //option one pulled from subsequent api object || add new option links to submit
     option2:"", //option two pulled from subsequent api object || end branch
+    keyValue:"0",
     }
   }
   //before render pulls data from api
@@ -19,7 +20,7 @@ export default class MainDisplay extends Component {
     }).then(data => {
       let displayText = data.map((stuff) => {
   //loops through array with .map and checks for req key value
-        if (stuff.keyValue == 0) {
+        if (stuff.keyValue === this.state.keyValue) {
 
         return(
           <div key={stuff.results}>
