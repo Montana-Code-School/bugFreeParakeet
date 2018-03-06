@@ -7,11 +7,16 @@ class StorySubmit extends Component {
     this.state = {
       optionsBox:"", //value to be set equal to user submission in optionsBox
       premiseBox:"", //value to be set equal to user submission in premiseBox
+      newValue:"",
+      checker:false,
     }
     // let variable = previousOption = keyValueofpreviousOption;
   }
+//naming things is hard
   onClick(e){
-    console.log("its working " + this.state.premiseBox + this.state.optionsBox)
+    let bleh = this.props.keyValue + "1";
+    this.setState({newValue:bleh});
+    this.props.getsValueFromSubmit(bleh);
     fetch('/api/stuff', {
       method: 'POST',
       headers: {
@@ -21,14 +26,16 @@ class StorySubmit extends Component {
       body: JSON.stringify ({
         storyPremise: this.state.premiseBox,
         optionOne: this.state.optionsBox,
-        // keyValue: variable + "1",
+        keyValue: this.props.keyValue + "1",
       })
     })
     this.setState({
       premiseBox: "",
       optionsBox: "",
     })
+    this.setState({checker:true});
   }
+
 
   onChange(e){
     if (e.target.id === "premiseInput") {
@@ -39,6 +46,8 @@ class StorySubmit extends Component {
 }
 
   render() {
+    console.log(this.props.keyValue);
+    if(this.state.checker === false){
     return (
       <div>
         <h1 className="header" id="submitTitle">Continue the Story...</h1>
@@ -48,11 +57,19 @@ class StorySubmit extends Component {
           <label className="labels">Premise: </label>
             <textarea value={this.state.premiseBox} onChange = {(e) => this.onChange(e)} id="premiseInput" rows="10" cols="75"></textarea>
             <br /><br />
-          <Link to="/home">
             <button onClick={(e) => this.onClick(e)} id="submitButtons" type="button" className="buttons">Submit</button>
-          </Link>
       </div>
     );
+  }else if(this.state.checker === true){
+    return(
+      <div>
+        <h1>Successfully Submitted</h1>
+        <Link to="/home">
+        <button>Continue</button>
+        </Link>
+      </div>
+    )
+  }
   }
 }
 
