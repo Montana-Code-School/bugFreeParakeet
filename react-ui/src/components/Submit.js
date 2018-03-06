@@ -8,6 +8,7 @@ class StorySubmit extends Component {
       optionsBox:"", //value to be set equal to user submission in optionsBox
       premiseBox:"", //value to be set equal to user submission in premiseBox
     }
+    // let variable = previousOption = keyValueofpreviousOption;
   }
   onClick(e){
     console.log("its working " + this.state.premiseBox + this.state.optionsBox)
@@ -20,11 +21,12 @@ class StorySubmit extends Component {
       body: JSON.stringify ({
         storyPremise: this.state.premiseBox,
         optionOne: this.state.optionsBox,
+        // keyValue: variable + "1",
       })
     })
     this.setState({
       premiseBox: "",
-      optionsBox: ""
+      optionsBox: "",
     })
   }
 
@@ -39,12 +41,12 @@ class StorySubmit extends Component {
   render() {
     return (
       <div>
-        <h1 className="header" id="submitTitle">Continue the Story</h1>
+        <h1 className="header" id="submitTitle">Continue the Story...</h1>
         <label className="labels">Option Title: </label>
             <input value= {this.state.optionsBox} onChange = {(e) => this.onChange(e)} id="optionInput" type="text" />
             <br /><br />
           <label className="labels">Premise: </label>
-            <textarea value={this.state.premiseBox} onChange = {(e) => this.onChange(e)} id="premiseInput" rows="10" cols="100"></textarea>
+            <textarea value={this.state.premiseBox} onChange = {(e) => this.onChange(e)} id="premiseInput" rows="10" cols="75"></textarea>
             <br /><br />
           <Link to="/home">
             <button onClick={(e) => this.onClick(e)} id="submitButtons" type="button" className="buttons">Submit</button>
