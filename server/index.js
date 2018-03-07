@@ -85,8 +85,8 @@ if (cluster.isMaster) {
       res.json(stuff);
     });
   });
-  router.route('/stuff/:stuff_id')
 
+  router.route('/stuff/:stuff_id')
     .get(({params}, res) => {
       Stuff.findById(params.stuff_id, (err, stuff) => {
         if (err)
@@ -128,6 +128,53 @@ if (cluster.isMaster) {
       });
     });
   });
+
+  router.route('/stuff/keyValue/:stuff_keyValue')
+    .get(({params}, res) => {
+      console.log("this is the correct route")
+      Stuff.findOne({"keyValue":params.stuff_keyValue}, (err, stuff) => {
+        if (err)
+          res.send(err);
+        res.json(stuff);
+      });
+    })
+    router.route('/stuff/keyValue/:stuff_keyValue/:stuff_optionOne')
+
+  .put(({params, body}, res) => {
+  let query = {"keyValue":params.stuff_keyValue};
+  Stuff.findOneAndUpdate(query, {optionOne: params.stuff_optionOne},  (err, stuff) => {
+
+      res.json({
+        message: 'Stuff put-ed!'
+      });
+    });
+});
+
+router.route('/stuff/keyValue2/:stuff_keyValue/:stuff_optionTwo')
+
+.put(({params, body}, res) => {
+let query = {"keyValue":params.stuff_keyValue};
+Stuff.findOneAndUpdate(query, {optionTwo: params.stuff_optionTwo},  (err, stuff) => {
+
+  res.json({
+    message: 'Stuff put-ed!'
+  });
+});
+});
+
+  // router.route('/stuff/:stuff_keyValue')
+  // .get(({params}, res) => {
+  //   Stuff.find({
+  //     keyValue: params.stuff_keyValue
+  //   }, (err, stuff) => {
+  //     if (err)
+  //       res.send(err);
+  //
+  //     res.json({
+  //       message: 'we found by keyValue?'
+  //     });
+  //   });
+
 
   app.use('/api', router);
 

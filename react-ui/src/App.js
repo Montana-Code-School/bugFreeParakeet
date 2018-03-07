@@ -16,6 +16,7 @@ class App extends Component {
     };
     this.getsValueFromMainDisplay = this.getsValueFromMainDisplay.bind(this);
     this.getsValueFromSubmit = this.getsValueFromSubmit.bind(this);
+    this.updatesNewValue = this.updatesNewValue.bind(this);
   }
   //declares function to be passed as props to get value from child.
   getsValueFromMainDisplay(value){
@@ -26,13 +27,17 @@ class App extends Component {
   getsValueFromSubmit(value){
     this.setState({newValue:value});
   }
+  updatesNewValue(value){
+    this.setState({newValue:value});
+  }
   render() {
+    console.log(this.state.newValue);
     return (
       <Router>
         <div>
            <Route exact path="/" component={Login} />
            <Route exact path="/home" render={(props)=>(
-             <MainDisplay newNewValue={this.state.newValue} getsValueFromMainDisplay={this.getsValueFromMainDisplay}/>
+             <MainDisplay updatesNewValue={this.updatesNewValue} newNewValue={this.state.newValue} getsValueFromMainDisplay={this.getsValueFromMainDisplay}/>
            )} />
            <Route exact path="/submit" render={(props)=>(
              <StorySubmit keyValue={this.state.keyValue} getsValueFromSubmit={this.getsValueFromSubmit} />
