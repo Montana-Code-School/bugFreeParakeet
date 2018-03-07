@@ -43,30 +43,30 @@ export default class MainDisplay extends Component {
                 </Link>
               </div>
             )
-      } else if(stuff.optionOne !== "" && stuff.optionTwo !== ""){
-          return(
-            <div key={stuff.results}>
+          } else if(stuff.optionOne !== "" && stuff.optionTwo !== ""){
+              return(
+                <div key={stuff.results}>
+                  <p id="premiseText"> {stuff.storyPremise}</p>
+                  <Link to="/home">
+                    <p className="mainDisplayOptionText" id="mainDisplayOptionOne" onClick={(e) => this.DoubleCaller(e)}>{stuff.optionOne}</p>
+                  </Link>
+                  <Link to="/home">
+                    <p className="mainDisplayOptionText" id="mainDisplayOptionTwo" onClick={(e) => this.DoubleCaller(e)}>{stuff.optionTwo}</p>
+                  </Link>
+                </div>
+              )
+          } else if(stuff.optionTwo == "" && stuff.optionOne == ""){
+            return(
+              <div key={stuff.results}>
               <p id="premiseText"> {stuff.storyPremise}</p>
-              <Link to="/home">
-                <p className="mainDisplayOptionText" id="mainDisplayOptionOne" onClick={(e) => this.DoubleCaller(e)}>{stuff.optionOne}</p>
+              <Link to="/submit">
+                <p className="mainDisplayOptionText" id="mainDisplayAddNewOption" onClick={(e) => this.onClick(e)}> Add New Option </p>
               </Link>
-              <Link to="/home">
-                <p className="mainDisplayOptionText" id="mainDisplayOptionTwo" onClick={(e) => this.DoubleCaller(e)}>{stuff.optionTwo}</p>
-              </Link>
-            </div>
-          )
-        } else if(stuff.optionTwo == "" && stuff.optionOne == ""){
-          return(
-            <div key={stuff.results}>
-            <p id="premiseText"> {stuff.storyPremise}</p>
-            <Link to="/submit">
-              <p className="mainDisplayOptionText" id="mainDisplayAddNewOption" onClick={(e) => this.onClick(e)}> Add New Option </p>
-            </Link>
-            </div>
-          )
+              </div>
+            )
 
+          }
         }
-      }
       })
     //sets premise equal to jsx for MainDisplay
       this.setState({premise:displayText});

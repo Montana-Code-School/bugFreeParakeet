@@ -129,18 +129,48 @@ if (cluster.isMaster) {
     });
   });
 
-  router.route('/stuff/:stuff_keyValue')
-  .get(({params}, res) => {
-    Stuff.find({
-      keyValue: params.stuff_keyValue
-    }, (err, stuff) => {
-      if (err)
-        res.send(err);
+  router.route('/stuff/keyValue/:stuff_keyValue')
+    .get(({params}, res) => {
+      console.log("this is the correct route")
+      Stuff.findOne({"keyValue":params.stuff_keyValue}, (err, stuff) => {
+        if (err)
+          res.send(err);
+        res.json(stuff);
+      });
+    })
+    router.route('/stuff/keyValue/:stuff_keyValue/:stuff_optionOne')
+
+  .put(({params, body}, res) => {
+  let query = {"keyValue":params.stuff_keyValue};
+  Stuff.findOneAndUpdate(query, {optionOne: params.stuff_optionOne},  (err, stuff) => {
+    // if (err)
+    //   res.send(err);
+    //   stuff.storyPremise = body.storyPremise;
+    //   stuff.optionOne = body.optionOne;
+    //   stuff.optionTwo = body.optionTwo;
+    //   stuff.keyValue = body.keyValue;
+    // stuff.save(err => {
+    //   if (err)
+    //     res.send(err);
 
       res.json({
-        message: 'we found by keyValue?'
+        message: 'Stuff put-ed!'
       });
     });
+  // });
+});
+  // router.route('/stuff/:stuff_keyValue')
+  // .get(({params}, res) => {
+  //   Stuff.find({
+  //     keyValue: params.stuff_keyValue
+  //   }, (err, stuff) => {
+  //     if (err)
+  //       res.send(err);
+  //
+  //     res.json({
+  //       message: 'we found by keyValue?'
+  //     });
+  //   });
 
 
   app.use('/api', router);

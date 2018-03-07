@@ -30,21 +30,23 @@ class StorySubmit extends Component {
         keyValue: this.props.keyValue + "1",
       })
     })
-    this.setState({
-      premiseBox: "",
-      optionsBox: "",
+    fetch(`/api/stuff/keyValue/${this.props.keyValue}/${this.state.optionsBox}`, {
+      method: 'PUT',
+      headers:{
+        'Accept': 'application/json',
+        'Content-Type':'application/json'
+      }
     })
     this.setState({checker:true});
   }
 
-
   onChange(e){
-    if (e.target.id === "premiseInput") {
-     this.setState({premiseBox: e.target.value})
-  } else if (e.target.id === "optionInput") {
-     this.setState({optionsBox: e.target.value})
+      if (e.target.id === "premiseInput") {
+       this.setState({premiseBox: e.target.value})
+    } else if (e.target.id === "optionInput") {
+       this.setState({optionsBox: e.target.value})
+    }
   }
-}
 
   render() {
     console.log(this.props.keyValue);
