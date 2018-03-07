@@ -85,8 +85,8 @@ if (cluster.isMaster) {
       res.json(stuff);
     });
   });
-  router.route('/stuff/:stuff_id')
 
+  router.route('/stuff/:stuff_id')
     .get(({params}, res) => {
       Stuff.findById(params.stuff_id, (err, stuff) => {
         if (err)
@@ -128,6 +128,20 @@ if (cluster.isMaster) {
       });
     });
   });
+
+  router.route('/stuff/:stuff_keyValue')
+  .get(({params}, res) => {
+    Stuff.find({
+      keyValue: params.stuff_keyValue
+    }, (err, stuff) => {
+      if (err)
+        res.send(err);
+
+      res.json({
+        message: 'we found by keyValue?'
+      });
+    });
+
 
   app.use('/api', router);
 

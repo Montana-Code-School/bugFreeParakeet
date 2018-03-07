@@ -13,7 +13,7 @@ export default class MainDisplay extends Component {
   };
   }
   //before render pulls data from api
-  componentDidMount() {
+  componentDidMount(e) {
     fetch(`/api/stuff`)
     .then(results => {
       return results.json();
@@ -31,16 +31,41 @@ export default class MainDisplay extends Component {
       let displayText = data.map((stuff) => {
   //loops through array with .map and checks for required key value
         if (stuff.keyValue == this.props.newNewValue) {
-
-        return(
-          <div key={stuff.results}>
+          if(stuff.optionTwo == "" && stuff.optionOne !== ""){
+            return(
+              <div key={stuff.results}>
+                <p id="premiseText"> {stuff.storyPremise}</p>
+                <Link to="/home">
+                  <p className="mainDisplayOptionText" id="mainDisplayOptionOne" onClick={(e) => this.DoubleCaller(e)}>{stuff.optionOne}</p>
+                </Link>
+                <Link to="/submit">
+                  <p className="mainDisplayOptionText" id="mainDisplayAddNewOption" onClick={(e) => this.onClick(e)}> Add New Option </p>
+                </Link>
+              </div>
+            )
+      } else if(stuff.optionOne !== "" && stuff.optionTwo !== ""){
+          return(
+            <div key={stuff.results}>
+              <p id="premiseText"> {stuff.storyPremise}</p>
+              <Link to="/home">
+                <p className="mainDisplayOptionText" id="mainDisplayOptionOne" onClick={(e) => this.DoubleCaller(e)}>{stuff.optionOne}</p>
+              </Link>
+              <Link to="/home">
+                <p className="mainDisplayOptionText" id="mainDisplayOptionTwo" onClick={(e) => this.DoubleCaller(e)}>{stuff.optionTwo}</p>
+              </Link>
+            </div>
+          )
+        } else if(stuff.optionTwo == "" && stuff.optionOne == ""){
+          return(
+            <div key={stuff.results}>
             <p id="premiseText"> {stuff.storyPremise}</p>
             <Link to="/submit">
-              <p className="mainDisplayOptionText" id="mainDisplayOptionOne" onClick={(e) => this.onClick(e)}> Add New Option </p>
+              <p className="mainDisplayOptionText" id="mainDisplayAddNewOption" onClick={(e) => this.onClick(e)}> Add New Option </p>
             </Link>
-            <p className="mainDisplayOptionText" id="mainDisplayOptionTwo" onClick={(e) => this.onClick(e)}>{stuff.optionTwo}</p>
-          </div>
-        )
+            </div>
+          )
+
+        }
       }
       })
     //sets premise equal to jsx for MainDisplay
@@ -48,16 +73,24 @@ export default class MainDisplay extends Component {
     })
   }
   onClick(e) {
-    if (e.target.id == 'mainDisplayOptionOne') {
+    if (e.target.id == 'mainDisplayAddNewOption') {
       // let work = this.state.keyValue;
       this.props.getsValueFromMainDisplay(this.state.keyValue)
     } else if (e.target.id == 'mainDisplayOptionTwo') {
       console.log("option two works");
-      console.log("the state is " + this.state.keyValue);
+      let blahblipity = this.props.newNewValue + "2";
+      this.props.updatesNewValue(blahblipity);
+    } else if (e.target.id == 'mainDisplayOptionOne') {
+      console.log("option one works");
+      let blipityblah = this.props.newNewValue + "1";
+      this.props.updatesNewValue(blipityblah);
     }
   }
+  DoubleCaller(e){
+    this.onClick(e);
+    this.componentDidMount(e);
+  }
   render () {
-    console.log(this.props.newNewValue);
     return (
       //renders this.state.premise
       <div>

@@ -25,7 +25,8 @@ class StorySubmit extends Component {
       },
       body: JSON.stringify ({
         storyPremise: this.state.premiseBox,
-        optionOne: this.state.optionsBox,
+        optionOne: "",
+        optionTwo: "",
         keyValue: this.props.keyValue + "1",
       })
     })
