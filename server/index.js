@@ -143,22 +143,25 @@ if (cluster.isMaster) {
   .put(({params, body}, res) => {
   let query = {"keyValue":params.stuff_keyValue};
   Stuff.findOneAndUpdate(query, {optionOne: params.stuff_optionOne},  (err, stuff) => {
-    // if (err)
-    //   res.send(err);
-    //   stuff.storyPremise = body.storyPremise;
-    //   stuff.optionOne = body.optionOne;
-    //   stuff.optionTwo = body.optionTwo;
-    //   stuff.keyValue = body.keyValue;
-    // stuff.save(err => {
-    //   if (err)
-    //     res.send(err);
 
       res.json({
         message: 'Stuff put-ed!'
       });
     });
-  // });
 });
+
+router.route('/stuff/keyValue2/:stuff_keyValue/:stuff_optionTwo')
+
+.put(({params, body}, res) => {
+let query = {"keyValue":params.stuff_keyValue};
+Stuff.findOneAndUpdate(query, {optionTwo: params.stuff_optionTwo},  (err, stuff) => {
+
+  res.json({
+    message: 'Stuff put-ed!'
+  });
+});
+});
+
   // router.route('/stuff/:stuff_keyValue')
   // .get(({params}, res) => {
   //   Stuff.find({

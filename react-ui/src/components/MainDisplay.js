@@ -39,7 +39,7 @@ export default class MainDisplay extends Component {
                   <p className="mainDisplayOptionText" id="mainDisplayOptionOne" onClick={(e) => this.DoubleCaller(e)}>{stuff.optionOne}</p>
                 </Link>
                 <Link to="/submit">
-                  <p className="mainDisplayOptionText" id="mainDisplayAddNewOption" onClick={(e) => this.onClick(e)}> Add New Option </p>
+                  <p className="mainDisplayOptionText" id="mainDisplayAddNewOptionTwo" onClick={(e) => this.onClick(e)}> Add New Option </p>
                 </Link>
               </div>
             )
@@ -60,7 +60,7 @@ export default class MainDisplay extends Component {
               <div key={stuff.results}>
               <p id="premiseText"> {stuff.storyPremise}</p>
               <Link to="/submit">
-                <p className="mainDisplayOptionText" id="mainDisplayAddNewOption" onClick={(e) => this.onClick(e)}> Add New Option </p>
+                <p className="mainDisplayOptionText" id="mainDisplayAddNewOptionOne" onClick={(e) => this.onClick(e)}> Add New Option </p>
               </Link>
               </div>
             )
@@ -73,9 +73,12 @@ export default class MainDisplay extends Component {
     })
   }
   onClick(e) {
-    if (e.target.id == 'mainDisplayAddNewOption') {
-      // let work = this.state.keyValue;
-      this.props.getsValueFromMainDisplay(this.state.keyValue)
+    if (e.target.id == 'mainDisplayAddNewOptionOne') {
+      let hiEd = this.state.keyValue + "1";
+      this.props.getsValueFromMainDisplay(hiEd);
+    } else if (e.target.id == 'mainDisplayAddNewOptionTwo') {
+      let hiAustin = this.state.keyValue + "2";
+      this.props.getsValueFromMainDisplay(hiAustin);
     } else if (e.target.id == 'mainDisplayOptionTwo') {
       console.log("option two works");
       let blahblipity = this.props.newNewValue + "2";

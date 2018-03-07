@@ -13,8 +13,12 @@ class StorySubmit extends Component {
     // let variable = previousOption = keyValueofpreviousOption;
   }
 //naming things is hard
+//bleh is new display key value for main display
   onClick(e){
-    let bleh = this.props.keyValue + "1";
+    let bleh = this.props.keyValue;
+    var arr = this.props.keyValue.split("");
+    arr.pop();
+    let ogValue = arr.join("");
     this.setState({newValue:bleh});
     this.props.getsValueFromSubmit(bleh);
     fetch('/api/stuff', {
@@ -27,16 +31,26 @@ class StorySubmit extends Component {
         storyPremise: this.state.premiseBox,
         optionOne: "",
         optionTwo: "",
-        keyValue: this.props.keyValue + "1",
+        keyValue: this.props.keyValue,
       })
     })
-    fetch(`/api/stuff/keyValue/${this.props.keyValue}/${this.state.optionsBox}`, {
+    if(this.props.keyValue.endsWith("1") === true){
+    fetch(`/api/stuff/keyValue/${ogValue}/${this.state.optionsBox}`, {
       method: 'PUT',
       headers:{
         'Accept': 'application/json',
         'Content-Type':'application/json'
       }
     })
+  }else{
+    fetch(`/api/stuff/keyValue2/${ogValue}/${this.state.optionsBox}`, {
+      method: 'PUT',
+      headers:{
+        'Accept': 'application/json',
+        'Content-Type':'application/json'
+      }
+    })
+  }
     this.setState({checker:true});
   }
 
