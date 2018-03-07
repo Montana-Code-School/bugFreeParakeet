@@ -10,7 +10,7 @@ export default class MainDisplay extends Component {
     option1:"", //option one pulled from subsequent api object || add new option links to submit
     option2:"", //option two pulled from subsequent api object || end branch
     keyValue:"0",
-    }
+  };
   }
   //before render pulls data from api
   componentDidMount() {
@@ -18,15 +18,25 @@ export default class MainDisplay extends Component {
     .then(results => {
       return results.json();
     }).then(data => {
+//loops through array of objects in our database and checks if their key values are
+//equal to this.props.newValue which intially is equal to 0, but its value
+//updates whenever a new object is submitted
+      for (var i = 0; i < data.length; i++) {
+        if (data[i].keyValue == this.props.newNewValue) {
+          this.setState({
+            keyValue:data[i].keyValue
+          });
+        }
+      }
       let displayText = data.map((stuff) => {
-  //loops through array with .map and checks for req key value
-        if (stuff.keyValue === this.state.keyValue) {
+  //loops through array with .map and checks for required key value
+        if (stuff.keyValue == this.props.newNewValue) {
 
         return(
           <div key={stuff.results}>
             <p id="premiseText"> {stuff.storyPremise}</p>
             <Link to="/submit">
-              <p className="mainDisplayOptionText" id="mainDisplayOptionOne"> Add New Option </p>
+              <p className="mainDisplayOptionText" id="mainDisplayOptionOne" onClick={(e) => this.onClick(e)}> Add New Option </p>
             </Link>
             <p className="mainDisplayOptionText" id="mainDisplayOptionTwo" onClick={(e) => this.onClick(e)}>{stuff.optionTwo}</p>
           </div>
@@ -37,16 +47,17 @@ export default class MainDisplay extends Component {
       this.setState({premise:displayText});
     })
   }
-  //get rid of me
   onClick(e) {
     if (e.target.id == 'mainDisplayOptionOne') {
-      console.log("option one works")
+      // let work = this.state.keyValue;
+      this.props.getsValueFromMainDisplay(this.state.keyValue)
     } else if (e.target.id == 'mainDisplayOptionTwo') {
-      console.log("option two works")
+      console.log("option two works");
+      console.log("the state is " + this.state.keyValue);
     }
   }
-  //stop getting rid of me
   render () {
+    console.log(this.props.newNewValue);
     return (
       //renders this.state.premise
       <div>
