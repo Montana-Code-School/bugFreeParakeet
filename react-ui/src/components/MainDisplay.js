@@ -8,8 +8,7 @@ export default class MainDisplay extends Component {
   this.state = {
     premise:"", //intro premise to be pulled from current api object
     keyValue:"0",
-    backButton:"",
-  };
+    };
   }
   //before render pulls data from api
   componentDidMount(e) {
