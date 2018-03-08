@@ -1,6 +1,8 @@
 # create-react-app with a Node server on Heroku
 run it:
-mongoimport -h localhost:27017 -d stuff -c stuffs --file dbSeed/stuffs.json --jsonArray
+mongoimport -h localhost:27017 -d adventure -c adventures --file dbSeed/adventure.json --jsonArray
+
+mongoimport -h ds251217.mlab.com:51217 -d heroku_c3c2mz0c -c adventures -u heroku_c3c2mz0c -p qfd9iou6s80c30a19sld3iddso --file ./dbSeed/adventure.json --jsonArray
 
 A minimal example of using a Node backend (server for API, proxy, & routing) with a [React frontend](https://github.com/facebookincubator/create-react-app).
 
