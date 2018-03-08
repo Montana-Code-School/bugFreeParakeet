@@ -5,13 +5,13 @@ class Login extends Component {
   render() {
     return (
       <div>
-          <h1 id="welcome" className="header">Welcome to The Unending Story!</h1>
+        <h1 id="welcome" className="header">Welcome to The Unending Story!</h1>
         <Link to="/home">
-        <br />
+          <br />
           <h3 id="login" className="links">Login</h3>
         </Link>
         <br />
-          <h3 id="signUp" className="links">Sign Up</h3>
+        <h3 id="signUp" className="links">Sign Up</h3>
       </div>
     );
   }

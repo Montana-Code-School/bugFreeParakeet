@@ -10,10 +10,7 @@ class StorySubmit extends Component {
       newValue:"",
       checker:false,
     };
-    // let variable = previousOption = keyValueofpreviousOption;
   }
-  //naming things is hard
-  //bleh is new display key value for main display
   onClick(e){
     let keyValue = this.props.keyValue;
     var arr = this.props.keyValue.split("");
@@ -79,6 +76,7 @@ class StorySubmit extends Component {
       );
     }else if(this.state.checker === true){
       return(
+        //submit page for api to catch up
         <div>
           <h1>Successfully Submitted</h1>
           <Link to="/home">

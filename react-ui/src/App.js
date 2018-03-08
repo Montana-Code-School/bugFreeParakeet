@@ -18,6 +18,7 @@ class App extends Component {
     this.updatesNewValue = this.updatesNewValue.bind(this);
   }
   //declares function to be passed as props to get value from child.
+  //sets keyValue equal to the passed value which determines what part of the story tree to render
   getsValueFromMainDisplay(value){
     this.setState({keyValue:value});
   }
@@ -26,6 +27,7 @@ class App extends Component {
   getsValueFromSubmit(value){
     this.setState({newValue:value});
   }
+  //displays new part of the story when user in mainDisplay clicks on an option
   updatesNewValue(value){
     this.setState({newValue:value});
   }

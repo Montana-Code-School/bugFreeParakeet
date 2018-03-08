@@ -34,13 +34,6 @@ if (cluster.isMaster) {
   app.use(bodyParser.json());
   app.use(cors());
 
-  // app.use(function(req, res, next) {
-  //   res.header("Access-Control-Allow-Origin", "*");
-  //   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  //   next();
-  // });
-  // check to see I if I need this...
-
   // connect to database
   mongoose.connection.openUri(db);
 
@@ -128,7 +121,7 @@ if (cluster.isMaster) {
         res.send(err);
 
       res.json({
-        message: 'Successfully adventureed'
+        message: 'Successfully adventured'
       });
     });
   });
@@ -149,7 +142,7 @@ if (cluster.isMaster) {
   Adventure.findOneAndUpdate(query, {optionOne: params.adventure_optionOne},  (err, adventure) => {
 
       res.json({
-        message: 'Adventure put-ed!'
+        message: 'Adventure was put for optionOne!'
       });
     });
 });
@@ -161,23 +154,10 @@ let query = {"keyValue":params.adventure_keyValue};
 Adventure.findOneAndUpdate(query, {optionTwo: params.adventure_optionTwo},  (err, adventure) => {
 
   res.json({
-    message: 'Adventure put-ed!'
+    message: 'Adventure was put for optionTwo!'
   });
 });
 });
-
-  // router.route('/adventure/:adventure_keyValue')
-  // .get(({params}, res) => {
-  //   Adventure.find({
-  //     keyValue: params.adventure_keyValue
-  //   }, (err, adventure) => {
-  //     if (err)
-  //       res.send(err);
-  //
-  //     res.json({
-  //       message: 'we found by keyValue?'
-  //     });
-  //   });
 
 
   app.use('/api', router);
