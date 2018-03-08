@@ -35,13 +35,13 @@ class App extends Component {
     return (
       <Router>
         <div>
-           <Route exact path="/" component={Login} />
-           <Route exact path="/home/" render={(props)=>(
-             <MainDisplay updatesNewValue={this.updatesNewValue} newNewValue={this.state.newValue} getsValueFromMainDisplay={this.getsValueFromMainDisplay}/>
-           )} />
-           <Route exact path="/submit" render={(props)=>(
-             <StorySubmit keyValue={this.state.keyValue} getsValueFromSubmit={this.getsValueFromSubmit} />
-           )} />
+          <Route exact path="/" component={Login} />
+          <Route exact path="/home/" render={(props)=>(
+            <MainDisplay updatesNewValue={this.updatesNewValue} newNewValue={this.state.newValue} getsValueFromMainDisplay={this.getsValueFromMainDisplay}/>
+          )} />
+          <Route exact path="/submit" render={(props)=>(
+            <StorySubmit keyValue={this.state.keyValue} getsValueFromSubmit={this.getsValueFromSubmit} />
+          )} />
         </div>
       </Router>
     );

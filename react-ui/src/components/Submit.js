@@ -9,11 +9,11 @@ class StorySubmit extends Component {
       premiseBox:"", //value to be set equal to user submission in premiseBox
       newValue:"",
       checker:false,
-    }
+    };
     // let variable = previousOption = keyValueofpreviousOption;
   }
-//naming things is hard
-//bleh is new display key value for main display
+  //naming things is hard
+  //bleh is new display key value for main display
   onClick(e){
     let bleh = this.props.keyValue;
     var arr = this.props.keyValue.split("");
@@ -33,60 +33,60 @@ class StorySubmit extends Component {
         optionTwo: "",
         keyValue: this.props.keyValue,
       })
-    })
+    });
     if(this.props.keyValue.endsWith("1") === true){
-    fetch(`/api/stuff/keyValue/${ogValue}/${this.state.optionsBox}`, {
-      method: 'PUT',
-      headers:{
-        'Accept': 'application/json',
-        'Content-Type':'application/json'
-      }
-    })
-  }else{
-    fetch(`/api/stuff/keyValue2/${ogValue}/${this.state.optionsBox}`, {
-      method: 'PUT',
-      headers:{
-        'Accept': 'application/json',
-        'Content-Type':'application/json'
-      }
-    })
-  }
+      fetch(`/api/stuff/keyValue/${ogValue}/${this.state.optionsBox}`, {
+        method: 'PUT',
+        headers:{
+          'Accept': 'application/json',
+          'Content-Type':'application/json'
+        }
+      });
+    }else{
+      fetch(`/api/stuff/keyValue2/${ogValue}/${this.state.optionsBox}`, {
+        method: 'PUT',
+        headers:{
+          'Accept': 'application/json',
+          'Content-Type':'application/json'
+        }
+      });
+    }
     this.setState({checker:true});
   }
 
   onChange(e){
-      if (e.target.id === "premiseInput") {
-       this.setState({premiseBox: e.target.value})
+    if (e.target.id === "premiseInput") {
+      this.setState({premiseBox: e.target.value});
     } else if (e.target.id === "optionInput") {
-       this.setState({optionsBox: e.target.value})
+      this.setState({optionsBox: e.target.value});
     }
   }
 
   render() {
     console.log(this.props.keyValue);
     if(this.state.checker === false){
-    return (
-      <div>
-        <h1 className="header" id="submitTitle">Continue the Story...</h1>
-        <label className="labels">Option Title: </label>
-            <input value= {this.state.optionsBox} onChange = {(e) => this.onChange(e)} id="optionInput" type="text" />
-            <br /><br />
+      return (
+        <div>
+          <h1 className="header" id="submitTitle">Continue the Story...</h1>
+          <label className="labels">Option Title: </label>
+          <input value= {this.state.optionsBox} onChange = {(e) => this.onChange(e)} id="optionInput" type="text" />
+          <br /><br />
           <label className="labels">Premise: </label>
-            <textarea value={this.state.premiseBox} onChange = {(e) => this.onChange(e)} id="premiseInput" rows="10" cols="75"></textarea>
-            <br /><br />
-            <button onClick={(e) => this.onClick(e)} id="submitButtons" type="button" className="buttons">Submit</button>
-      </div>
-    );
-  }else if(this.state.checker === true){
-    return(
-      <div>
-        <h1>Successfully Submitted</h1>
-        <Link to="/home">
-        <button>Continue</button>
-        </Link>
-      </div>
-    )
-  }
+          <textarea value={this.state.premiseBox} onChange = {(e) => this.onChange(e)} id="premiseInput" rows="10" cols="75"></textarea>
+          <br /><br />
+          <button onClick={(e) => this.onClick(e)} id="submitButtons" type="button" className="buttons">Submit</button>
+        </div>
+      );
+    }else if(this.state.checker === true){
+      return(
+        <div>
+          <h1>Successfully Submitted</h1>
+          <Link to="/home">
+            <button>Continue</button>
+          </Link>
+        </div>
+      );
+    }
   }
 }
 
