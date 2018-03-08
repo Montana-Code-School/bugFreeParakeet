@@ -84,8 +84,12 @@ if (cluster.isMaster) {
 
       res.json(stuff);
     });
-  });
-
+  })
+  .delete((req, res) => {
+    Stuff.remove({}, (err)=>{
+      console.log("all your data belongs to us")
+    })
+  })
   router.route('/stuff/:stuff_id')
     .get(({params}, res) => {
       Stuff.findById(params.stuff_id, (err, stuff) => {
