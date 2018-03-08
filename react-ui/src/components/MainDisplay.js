@@ -7,9 +7,8 @@ export default class MainDisplay extends Component {
   super(props);
   this.state = {
     premise:"", //intro premise to be pulled from current api object
-    option1:"", //option one pulled from subsequent api object || add new option links to submit
-    option2:"", //option two pulled from subsequent api object || end branch
     keyValue:"0",
+    backButton:"",
   };
   }
   //before render pulls data from api
@@ -93,12 +92,34 @@ export default class MainDisplay extends Component {
     this.onClick(e);
     this.componentDidMount(e);
   }
+  goBack(e) {
+    var arr = this.props.newNewValue.split("");
+    arr.pop();
+    let backValue = arr.join("");
+    this.props.updatesNewValue(backValue);
+    console.log(backValue);
+  }
+  BackCaller(e){
+    this.goBack(e);
+    this.componentDidMount(e);
+  }
   render () {
-    return (
+    console.log(this.state.premise);
+    console.log(this.state.backButton);
+    if(this.props.newNewValue === "0"){
+      return (
       //renders this.state.premise
+        <div>
+          {this.state.premise}
+        </div>
+      )
+    }else{
+      return(
       <div>
-      {this.state.premise}
+        {this.state.premise}
+        <button onClick={(e) => this.BackCaller(e)}>Back</button>
       </div>
     )
+    }
   }
 }

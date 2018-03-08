@@ -36,7 +36,7 @@ class App extends Component {
       <Router>
         <div>
            <Route exact path="/" component={Login} />
-           <Route exact path="/home" render={(props)=>(
+           <Route exact path="/home/" render={(props)=>(
              <MainDisplay updatesNewValue={this.updatesNewValue} newNewValue={this.state.newValue} getsValueFromMainDisplay={this.getsValueFromMainDisplay}/>
            )} />
            <Route exact path="/submit" render={(props)=>(
