@@ -21,7 +21,7 @@ class StorySubmit extends Component {
     let ogValue = arr.join("");
     this.setState({newValue:keyValue});
     this.props.getsValueFromSubmit(keyValue);
-    fetch('/api/stuff', {
+    fetch('/api/adventure', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
@@ -35,7 +35,7 @@ class StorySubmit extends Component {
       })
     });
     if(this.props.keyValue.endsWith("1") === true){
-      fetch(`/api/stuff/keyValue/${ogValue}/${this.state.optionsBox}`, {
+      fetch(`/api/adventure/keyValue/${ogValue}/${this.state.optionsBox}`, {
         method: 'PUT',
         headers:{
           'Accept': 'application/json',
@@ -43,7 +43,7 @@ class StorySubmit extends Component {
         }
       });
     }else{
-      fetch(`/api/stuff/keyValue2/${ogValue}/${this.state.optionsBox}`, {
+      fetch(`/api/adventure/keyValue2/${ogValue}/${this.state.optionsBox}`, {
         method: 'PUT',
         headers:{
           'Accept': 'application/json',

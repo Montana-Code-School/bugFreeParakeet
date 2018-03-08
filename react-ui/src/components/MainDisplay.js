@@ -12,7 +12,7 @@ export default class MainDisplay extends Component {
   }
   //before render pulls data from api
   componentDidMount(e) {
-    fetch(`/api/stuff`)
+    fetch(`/api/adventure`)
       .then(results => {
         return results.json();
       }).then(data => {
@@ -26,37 +26,37 @@ export default class MainDisplay extends Component {
             });
           }
         }
-        let displayText = data.map((stuff) => {
+        let displayText = data.map((adventure) => {
           //loops through array with .map and checks for required key value
-          if (stuff.keyValue == this.props.newNewValue) {
-            if(stuff.optionTwo == "" && stuff.optionOne !== ""){
+          if (adventure.keyValue == this.props.newNewValue) {
+            if(adventure.optionTwo == "" && adventure.optionOne !== ""){
               return(
-                <div key={stuff.results}>
-                  <p id="premiseText"> {stuff.storyPremise}</p>
+                <div key={adventure.results}>
+                  <p id="premiseText"> {adventure.storyPremise}</p>
                   <Link to="/home">
-                    <p className="mainDisplayOptionText" id="mainDisplayOptionOne" onClick={(e) => this.DoubleCaller(e)}>{stuff.optionOne}</p>
+                    <p className="mainDisplayOptionText" id="mainDisplayOptionOne" onClick={(e) => this.DoubleCaller(e)}>{adventure.optionOne}</p>
                   </Link>
                   <Link to="/submit">
                     <p className="mainDisplayOptionText" id="mainDisplayAddNewOptionTwo" onClick={(e) => this.onClick(e)}> Add New Option </p>
                   </Link>
                 </div>
               );
-            } else if(stuff.optionOne !== "" && stuff.optionTwo !== ""){
+            } else if(adventure.optionOne !== "" && adventure.optionTwo !== ""){
               return(
-                <div key={stuff.results}>
-                  <p id="premiseText"> {stuff.storyPremise}</p>
+                <div key={adventure.results}>
+                  <p id="premiseText"> {adventure.storyPremise}</p>
                   <Link to="/home">
-                    <p className="mainDisplayOptionText" id="mainDisplayOptionOne" onClick={(e) => this.DoubleCaller(e)}>{stuff.optionOne}</p>
+                    <p className="mainDisplayOptionText" id="mainDisplayOptionOne" onClick={(e) => this.DoubleCaller(e)}>{adventure.optionOne}</p>
                   </Link>
                   <Link to="/home">
-                    <p className="mainDisplayOptionText" id="mainDisplayOptionTwo" onClick={(e) => this.DoubleCaller(e)}>{stuff.optionTwo}</p>
+                    <p className="mainDisplayOptionText" id="mainDisplayOptionTwo" onClick={(e) => this.DoubleCaller(e)}>{adventure.optionTwo}</p>
                   </Link>
                 </div>
               );
-            } else if(stuff.optionTwo == "" && stuff.optionOne == ""){
+            } else if(adventure.optionTwo == "" && adventure.optionOne == ""){
               return(
-                <div key={stuff.results}>
-                  <p id="premiseText"> {stuff.storyPremise}</p>
+                <div key={adventure.results}>
+                  <p id="premiseText"> {adventure.storyPremise}</p>
                   <Link to="/submit">
                     <p className="mainDisplayOptionText" id="mainDisplayAddNewOptionOne" onClick={(e) => this.onClick(e)}> Add New Option </p>
                   </Link>

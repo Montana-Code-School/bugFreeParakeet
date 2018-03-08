@@ -7,7 +7,7 @@ const numCPUs = require('os').cpus().length;
 const cors = require('cors');
 
 const PORT = process.env.PORT || 5000;
-const db = process.env.MONGODB_URI || 'mongodb://localhost/stuff'
+const db = process.env.MONGODB_URI || 'mongodb://localhost/adventure'
 
 // Multi-process to utilize all CPU cores.
 if (cluster.isMaster) {
@@ -25,7 +25,7 @@ if (cluster.isMaster) {
 } else {
   const app = express();
   mongoose.Promise = require('bluebird');
-  const Stuff = require('../models/stuff.js');
+  const Adventure = require('../models/adventure.js');
   const router = express.Router();
 
   // Priority serve any static files.
@@ -60,14 +60,14 @@ if (cluster.isMaster) {
       message: 'I did it!'
     });
   });
-  router.route('/stuff')
+  router.route('/adventure')
     .post(({body}, res) => {
-      const stuff = new Stuff();
-      stuff.storyPremise = body.storyPremise;
-      stuff.optionOne = body.optionOne;
-      stuff.optionTwo = body.optionTwo;
-      stuff.keyValue = body.keyValue;
-      stuff.save(err => {
+      const adventure = new Adventure();
+      adventure.storyPremise = body.storyPremise;
+      adventure.optionOne = body.optionOne;
+      adventure.optionTwo = body.optionTwo;
+      adventure.keyValue = body.keyValue;
+      adventure.save(err => {
         if (err)
           res.send(err);
         res.json({
@@ -77,100 +77,100 @@ if (cluster.isMaster) {
     })
     .get((req, res) => {
     console.log("it works");
-    Stuff.find((err, stuff) => {
+    Adventure.find((err, adventure) => {
       console.log(err);
       if (err)
         res.send(err);
 
-      res.json(stuff);
+      res.json(adventure);
     });
   })
   .delete((req, res) => {
-    Stuff.remove({}, (err)=>{
+    Adventure.remove({}, (err)=>{
       console.log("all your data belongs to us")
     })
   })
-  router.route('/stuff/:stuff_id')
+  router.route('/adventure/:adventure_id')
     .get(({params}, res) => {
-      Stuff.findById(params.stuff_id, (err, stuff) => {
+      Adventure.findById(params.adventure_id, (err, adventure) => {
         if (err)
           res.send(err);
-        res.json(stuff);
+        res.json(adventure);
       });
     })
     .put(({params, body}, res) => {
 
-    Stuff.findById(params.stuff_id, (err, stuff) => {
+    Adventure.findById(params.adventure_id, (err, adventure) => {
 
       if (err)
         res.send(err);
 
-        stuff.storyPremise = body.storyPremise;
-        stuff.optionOne = body.optionOne;
-        stuff.optionTwo = body.optionTwo;
-        stuff.keyValue = body.keyValue;
-      stuff.save(err => {
+        adventure.storyPremise = body.storyPremise;
+        adventure.optionOne = body.optionOne;
+        adventure.optionTwo = body.optionTwo;
+        adventure.keyValue = body.keyValue;
+      adventure.save(err => {
         if (err)
           res.send(err);
 
         res.json({
-          message: 'Stuff updated!'
+          message: 'Adventure updated!'
         });
       });
     });
   })
 
   .delete(({params}, res) => {
-    Stuff.remove({
-      _id: params.stuff_id
-    }, (err, stuff) => {
+    Adventure.remove({
+      _id: params.adventure_id
+    }, (err, adventure) => {
       if (err)
         res.send(err);
 
       res.json({
-        message: 'Successfully stuffed'
+        message: 'Successfully adventureed'
       });
     });
   });
 
-  router.route('/stuff/keyValue/:stuff_keyValue')
+  router.route('/adventure/keyValue/:adventure_keyValue')
     .get(({params}, res) => {
       console.log("this is the correct route")
-      Stuff.findOne({"keyValue":params.stuff_keyValue}, (err, stuff) => {
+      Adventure.findOne({"keyValue":params.adventure_keyValue}, (err, adventure) => {
         if (err)
           res.send(err);
-        res.json(stuff);
+        res.json(adventure);
       });
     })
-    router.route('/stuff/keyValue/:stuff_keyValue/:stuff_optionOne')
+    router.route('/adventure/keyValue/:adventure_keyValue/:adventure_optionOne')
 
   .put(({params, body}, res) => {
-  let query = {"keyValue":params.stuff_keyValue};
-  Stuff.findOneAndUpdate(query, {optionOne: params.stuff_optionOne},  (err, stuff) => {
+  let query = {"keyValue":params.adventure_keyValue};
+  Adventure.findOneAndUpdate(query, {optionOne: params.adventure_optionOne},  (err, adventure) => {
 
       res.json({
-        message: 'Stuff put-ed!'
+        message: 'Adventure put-ed!'
       });
     });
 });
 
-router.route('/stuff/keyValue2/:stuff_keyValue/:stuff_optionTwo')
+router.route('/adventure/keyValue2/:adventure_keyValue/:adventure_optionTwo')
 
 .put(({params, body}, res) => {
-let query = {"keyValue":params.stuff_keyValue};
-Stuff.findOneAndUpdate(query, {optionTwo: params.stuff_optionTwo},  (err, stuff) => {
+let query = {"keyValue":params.adventure_keyValue};
+Adventure.findOneAndUpdate(query, {optionTwo: params.adventure_optionTwo},  (err, adventure) => {
 
   res.json({
-    message: 'Stuff put-ed!'
+    message: 'Adventure put-ed!'
   });
 });
 });
 
-  // router.route('/stuff/:stuff_keyValue')
+  // router.route('/adventure/:adventure_keyValue')
   // .get(({params}, res) => {
-  //   Stuff.find({
-  //     keyValue: params.stuff_keyValue
-  //   }, (err, stuff) => {
+  //   Adventure.find({
+  //     keyValue: params.adventure_keyValue
+  //   }, (err, adventure) => {
   //     if (err)
   //       res.send(err);
   //
