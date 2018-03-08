@@ -15,12 +15,12 @@ class StorySubmit extends Component {
   //naming things is hard
   //bleh is new display key value for main display
   onClick(e){
-    let bleh = this.props.keyValue;
+    let keyValue = this.props.keyValue;
     var arr = this.props.keyValue.split("");
     arr.pop();
     let ogValue = arr.join("");
-    this.setState({newValue:bleh});
-    this.props.getsValueFromSubmit(bleh);
+    this.setState({newValue:keyValue});
+    this.props.getsValueFromSubmit(keyValue);
     fetch('/api/stuff', {
       method: 'POST',
       headers: {

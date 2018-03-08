@@ -72,19 +72,19 @@ export default class MainDisplay extends Component {
   }
   onClick(e) {
     if (e.target.id == 'mainDisplayAddNewOptionOne') {
-      let hiEd = this.state.keyValue + "1";
-      this.props.getsValueFromMainDisplay(hiEd);
+      let newKeyValue = this.state.keyValue + "1";
+      this.props.getsValueFromMainDisplay(newKeyValue);
     } else if (e.target.id == 'mainDisplayAddNewOptionTwo') {
-      let hiAustin = this.state.keyValue + "2";
-      this.props.getsValueFromMainDisplay(hiAustin);
+      let newKeyValue = this.state.keyValue + "2";
+      this.props.getsValueFromMainDisplay(newKeyValue);
     } else if (e.target.id == 'mainDisplayOptionTwo') {
       console.log("option two works");
-      let blahblipity = this.props.newNewValue + "2";
-      this.props.updatesNewValue(blahblipity);
+      let newKeyValue = this.props.newNewValue + "2";
+      this.props.updatesNewValue(newKeyValue);
     } else if (e.target.id == 'mainDisplayOptionOne') {
       console.log("option one works");
-      let blipityblah = this.props.newNewValue + "1";
-      this.props.updatesNewValue(blipityblah);
+      let newKeyValue = this.props.newNewValue + "1";
+      this.props.updatesNewValue(newKeyValue);
     }
   }
   DoubleCaller(e){

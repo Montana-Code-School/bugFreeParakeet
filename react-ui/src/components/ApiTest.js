@@ -27,7 +27,7 @@ export default class ApiTest extends Component {
           message: `API call failed: ${e}`,
           fetching: false
         });
-      })
+      });
   }
 
   render() {
