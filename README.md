@@ -4,6 +4,8 @@ mongoimport -h localhost:27017 -d adventure -c adventures --file dbSeed/adventur
 
 mongoimport -h ds251217.mlab.com:51217 -d heroku_c3c2mz0c -c adventures -u heroku_c3c2mz0c -p qfd9iou6s80c30a19sld3iddso --file ./dbSeed/adventure.json --jsonArray
 
+https://bugfreeparakeet.herokuapp.com/api/adventure/
+
 A minimal example of using a Node backend (server for API, proxy, & routing) with a [React frontend](https://github.com/facebookincubator/create-react-app).
 
 To deploy a frontend-only React app, use the static-site optimized  

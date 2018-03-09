@@ -32,7 +32,6 @@ class App extends Component {
     this.setState({newValue:value});
   }
   render() {
-    console.log(this.state.newValue);
     return (
       <Router>
         <div>

@@ -78,11 +78,9 @@ export default class MainDisplay extends Component {
       let newKeyValue = this.state.keyValue + "2";
       this.props.getsValueFromMainDisplay(newKeyValue);
     } else if (e.target.id == 'mainDisplayOptionTwo') {
-      console.log("option two works");
       let newKeyValue = this.props.newNewValue + "2";
       this.props.updatesNewValue(newKeyValue);
     } else if (e.target.id == 'mainDisplayOptionOne') {
-      console.log("option one works");
       let newKeyValue = this.props.newNewValue + "1";
       this.props.updatesNewValue(newKeyValue);
     }
@@ -96,7 +94,6 @@ export default class MainDisplay extends Component {
     arr.pop();
     let backValue = arr.join("");
     this.props.updatesNewValue(backValue);
-    console.log(backValue);
   }
   BackCaller(e){
     this.goBack(e);

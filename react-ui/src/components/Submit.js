@@ -18,6 +18,7 @@ class StorySubmit extends Component {
     let ogValue = arr.join("");
     this.setState({newValue:keyValue});
     this.props.getsValueFromSubmit(keyValue);
+
     fetch('/api/adventure', {
       method: 'POST',
       headers: {
@@ -60,7 +61,6 @@ class StorySubmit extends Component {
   }
 
   render() {
-    console.log(this.props.keyValue);
     if(this.state.checker === false){
       return (
         <div>
