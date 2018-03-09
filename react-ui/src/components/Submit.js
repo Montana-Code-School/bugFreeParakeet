@@ -71,7 +71,7 @@ class StorySubmit extends Component {
           <label className="labels">Premise: </label>
           <textarea value={this.state.premiseBox} onChange = {(e) => this.onChange(e)} id="premiseInput" rows="10" cols="75"></textarea>
           <br /><br />
-          <button onClick={(e) => this.onClick(e)} id="submitButtons" type="button" className="buttons">Submit</button>
+          <button onClick={(e) => this.onClick(e)} id="submitButton" type="button" className="buttons">Submit</button>
         </div>
       );
     }else if(this.state.checker === true){
