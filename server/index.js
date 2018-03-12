@@ -148,17 +148,33 @@ if (cluster.isMaster) {
 });
 
 router.route('/adventure/keyValue2/:adventure_keyValue/:adventure_optionTwo')
-
-.put(({params, body}, res) => {
-let query = {"keyValue":params.adventure_keyValue};
-Adventure.findOneAndUpdate(query, {optionTwo: params.adventure_optionTwo},  (err, adventure) => {
-
-  res.json({
-    message: 'Adventure was put for optionTwo!'
+  .put(({params, body}, res) => {
+    let query = {"keyValue":params.adventure_keyValue};
+    Adventure.findOneAndUpdate(query, {optionTwo: params.adventure_optionTwo},  (err, adventure) => {
+      res.json({
+        message: 'Adventure was put for optionTwo!',
+      });
+    });
   });
-});
-});
+router.route('/adventure/:adventure_keyValue/reset')
+  .put(({params, body}, res) => {
+    let query = {"keyValue": params.adventure_keyValue};
+    Adventure.findOneAndUpdate(query, {optionOne: ""}, (err, adventure) => {
+      res.json({
+        message: 'option one reset'
+      });
+    });
+  });
 
+router.route('/adventure/:adventure_keyValue/reset2')
+  .put(({params, body}, res) => {
+    let query = {"keyValue": params.adventure_keyValue};
+    Adventure.findOneAndUpdate(query, {optionTwo: ""}, (err, adventure) => {
+      res.json({
+        message: 'option two reset'
+      });
+    });
+  });
 
   app.use('/api', router);
 
