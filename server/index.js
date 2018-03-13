@@ -60,6 +60,7 @@ if (cluster.isMaster) {
       adventure.optionOne = body.optionOne;
       adventure.optionTwo = body.optionTwo;
       adventure.keyValue = body.keyValue;
+      adventure.branchEnded = body.branchEnded;
       adventure.save(err => {
         if (err)
           res.send(err);
@@ -102,6 +103,7 @@ if (cluster.isMaster) {
         adventure.optionOne = body.optionOne;
         adventure.optionTwo = body.optionTwo;
         adventure.keyValue = body.keyValue;
+        adventure.branchEnded = adventure.branchEnded;
       adventure.save(err => {
         if (err)
           res.send(err);
@@ -175,6 +177,15 @@ router.route('/adventure/:adventure_keyValue/reset2')
       });
     });
   });
+  router.route('/adventure/:adventure_keyValue/endBranch')
+    .put(({params, body}, res) => {
+      let query = {"keyValue": params.adventure_keyValue};
+      Adventure.findOneAndUpdate(query, {branchEnded: "yes"}, (err, adventure) => {
+        res.json({
+          message: 'branchEnded'
+        });
+      });
+    });
 
   app.use('/api', router);
 

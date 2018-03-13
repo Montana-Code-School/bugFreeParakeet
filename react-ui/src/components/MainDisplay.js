@@ -8,6 +8,7 @@ export default class MainDisplay extends Component {
     this.state = {
       premise:"", //intro premise to be pulled from current api object
       keyValue:"0",
+      checker: true,
     };
   }
   //before render pulls data from api
@@ -29,7 +30,14 @@ export default class MainDisplay extends Component {
         let displayText = data.map((adventure) => {
           //loops through array with .map and checks for required key value
           if (adventure.keyValue == this.props.newNewValue) {
-            if(adventure.optionTwo == "" && adventure.optionOne !== ""){
+            if(adventure.branchEnded == "yes"){
+              return(
+                <div key={adventure.results}>
+                  <p id="premiseText"> {adventure.storyPremise}</p>
+                  <p>End of Branch</p>
+                </div>
+              );
+            }else if(adventure.optionTwo == "" && adventure.optionOne !== ""){
               return(
                 <div key={adventure.results}>
                   <p id="premiseText"> {adventure.storyPremise}</p>
@@ -60,6 +68,9 @@ export default class MainDisplay extends Component {
                   <Link to="/submit">
                     <p className="mainDisplayOptionText" id="mainDisplayAddNewOptionOne" onClick={(e) => this.onClick(e)}> Add New Option </p>
                   </Link>
+                  <Link to ="/home">
+                    <p className="mainDisplayOptionText" id="mainDisplayEndBranch" onClick={(e) => this.onClick(e)}> End </p>
+                  </Link>
                 </div>
               );
 
@@ -83,6 +94,15 @@ export default class MainDisplay extends Component {
     } else if (e.target.id == 'mainDisplayOptionOne') {
       let newKeyValue = this.props.newNewValue + "1";
       this.props.updatesNewValue(newKeyValue);
+    } else if (e.target.id == 'mainDisplayEndBranch'){
+      fetch(`/api/adventure/${this.props.newNewValue}/endBranch`, {
+        method: 'PUT',
+        headers:{
+          'Accept': 'application/json',
+          'Content-Type':'application/json'
+        }
+      });
+      this.setState({checker:false});
     }
   }
   DoubleCaller(e){
@@ -98,6 +118,11 @@ export default class MainDisplay extends Component {
   BackCaller(e){
     this.goBack(e);
     this.componentDidMount(e);
+
+  }
+  checkSetter(e){
+    this.setState({checker:true});
+    this.componentDidMount(e);
   }
   render () {
     if(this.props.newNewValue === "0"){
@@ -108,12 +133,21 @@ export default class MainDisplay extends Component {
         </div>
       );
     }else{
-      return(
-        <div>
-          {this.state.premise}
-          <button onClick={(e) => this.BackCaller(e)}>Back</button>
-        </div>
-      );
+      if(this.state.checker == true){
+        return(
+          <div>
+            {this.state.premise}
+            <button onClick={(e) => this.BackCaller(e)}>Back</button>
+          </div>
+        );
+      }else{
+        return(
+          <div>
+            <h1>Stories over bitch</h1>
+            <button onClick={(e) => this.checkSetter(e)}>Back</button>
+          </div>
+        )
+      }
     }
   }
 }
