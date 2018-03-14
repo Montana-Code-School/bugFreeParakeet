@@ -26,7 +26,7 @@ class StorySubmit extends Component {
       });
   }
   onClick(e){
-    if(this.state.optionsBox.length !== 0) {
+    if(this.state.optionsBox.length !== 0 && this.state.premiseBox.length !== 0) {
       let ogValue = stringShortener(this.props.keyValue);
       let keyValue = this.props.keyValue;
       this.setState({newValue:keyValue});
@@ -86,9 +86,11 @@ class StorySubmit extends Component {
           <h1 className="header" id="submitTitle">Continue the Story...</h1>
           <label className="labels">Option Title: </label>
           <input value= {this.state.optionsBox} onChange = {(e) => this.onChange(e)} id="optionInput" type="text" maxlength="80" />
+          <p>Char Limit: 50 Current: {this.state.optionsBox.length}</p>
           <br /><br />
           <label className="labels">Premise: </label>
           <textarea value={this.state.premiseBox} onChange = {(e) => this.onChange(e)} id="premiseInput" rows="10" cols="75" maxlength="1000"></textarea>
+          <p>Char Limit: 1000 Current: {this.state.premiseBox.length}</p>
           <br /><br />
           <button onClick={(e) => this.onClick(e)} id="submitButton" type="button" className="buttons">Submit</button>
         </div>

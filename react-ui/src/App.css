@@ -45,19 +45,27 @@ html {
   font-family: comic serif;
   font-weight: bold;
 }
+#mainDisplayEndBranch{
+  color: darkred;
+}
+#mainDisplayEndBranch:hover{
+  color: red;
+}
+#mainDisplayAddNewOptionTwo{
+  color: #25628D;
+}
+#mainDisplayAddNewOptionTwo:hover{
+  color: red;
+}
+#mainDisplayAddNewOptionOne{
+  color: #25628D;
+}
+#mainDisplayAddNewOptionOne:hover{
+  color: red;
+}
 a:link {
   text-decoration: none;
 }
 a:hover {
   color: red;
-}
-#mainDisplayAddNewOptionTwo
-#mainDisplayEndBranch{
-  color: darkred;
-}
-#mainDisplayAddNewOptionTwo{
-  color: #25628D;
-}
-#mainDisplayAddNewOptionOne{
-  color: #25628D;
 }
