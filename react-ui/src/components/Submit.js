@@ -25,7 +25,7 @@ class StorySubmit extends Component {
         }
       });
   }
-  onClick(e){
+  onSubmit(e){
     if(this.state.optionsBox.length !== 0 && this.state.premiseBox.length !== 0) {
       let ogValue = stringShortener(this.props.keyValue);
       let keyValue = this.props.keyValue;
@@ -92,7 +92,7 @@ class StorySubmit extends Component {
           <textarea value={this.state.premiseBox} onChange = {(e) => this.onChange(e)} id="premiseInput" rows="10" cols="75" maxlength="1000"></textarea>
           <p>Char Limit: 1000 Current: {this.state.premiseBox.length}</p>
           <br /><br />
-          <button onClick={(e) => this.onClick(e)} id="submitButton" type="button" className="buttons">Submit</button>
+          <button onClick={(e) => this.onSubmit(e)} id="submitButton" type="button" className="buttons">Submit</button>
         </div>
       );
     }else if(this.state.checker === true){
