@@ -35,6 +35,7 @@ export default class MainDisplay extends Component {
                 <div key={adventure.results}>
                   <p id="premiseText"> {adventure.storyPremise}</p>
                   <p className="mainDisplayOptionText">The End</p>
+                  <button onClick={(e) => this.checkResetter(e)}>Back to Start</button>
                 </div>
               );
             }else if(adventure.optionTwo == "" && adventure.optionOne !== ""){
@@ -53,9 +54,11 @@ export default class MainDisplay extends Component {
               return(
                 <div key={adventure.results}>
                   <p id="premiseText"> {adventure.storyPremise}</p>
-                  <Link to="/home" id="mainDisplayOptionOne">
-                    <p className="mainDisplayOptionText" id="mainDisplayOptionOne"  onClick={(e) => this.DoubleCaller(e)}>{adventure.optionOne}</p>
-                  </Link>
+                  <div>
+                    <Link to="/home" id="mainDisplayOptionOne" className="Links">
+                      <p className="mainDisplayOptionText" id="mainDisplayOptionOne"  onClick={(e) => this.DoubleCaller(e)}>{adventure.optionOne}</p>
+                    </Link>
+                  </div>
                   <Link to="/home" id="mainDisplayOptionTwo">
                     <p className="mainDisplayOptionText" id="mainDisplayOptionTwo"  onClick={(e) => this.DoubleCaller(e)}>{adventure.optionTwo}</p>
                   </Link>

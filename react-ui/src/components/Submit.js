@@ -26,45 +26,47 @@ class StorySubmit extends Component {
       });
   }
   onClick(e){
-    let ogValue = stringShortener(this.props.keyValue);
-    let keyValue = this.props.keyValue;
-    this.setState({newValue:keyValue});
-    this.props.getsValueFromSubmit(keyValue);
-    if(this.state.checker2 === true) {
-      fetch('/api/adventure', {
-        method: 'POST',
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify ({
-          storyPremise: this.state.premiseBox,
-          optionOne: "",
-          optionTwo: "",
-          keyValue: this.props.keyValue,
-        })
-      });
-      if(this.props.keyValue.endsWith("1") === true){
-        fetch(`/api/adventure/keyValue/${ogValue}/${this.state.optionsBox}`, {
-          method: 'PUT',
-          headers:{
+    if(this.state.optionsBox.length !== 0) {
+      let ogValue = stringShortener(this.props.keyValue);
+      let keyValue = this.props.keyValue;
+      this.setState({newValue:keyValue});
+      this.props.getsValueFromSubmit(keyValue);
+      if(this.state.checker2 === true) {
+        fetch('/api/adventure', {
+          method: 'POST',
+          headers: {
             'Accept': 'application/json',
-            'Content-Type':'application/json'
-          }
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify ({
+            storyPremise: this.state.premiseBox,
+            optionOne: "",
+            optionTwo: "",
+            keyValue: this.props.keyValue,
+          })
         });
+        if(this.props.keyValue.endsWith("1") === true){
+          fetch(`/api/adventure/keyValue/${ogValue}/${this.state.optionsBox}`, {
+            method: 'PUT',
+            headers:{
+              'Accept': 'application/json',
+              'Content-Type':'application/json'
+            }
+          });
+        }else{
+          fetch(`/api/adventure/keyValue2/${ogValue}/${this.state.optionsBox}`, {
+            method: 'PUT',
+            headers:{
+              'Accept': 'application/json',
+              'Content-Type':'application/json'
+            }
+          });
+        }
       }else{
-        fetch(`/api/adventure/keyValue2/${ogValue}/${this.state.optionsBox}`, {
-          method: 'PUT',
-          headers:{
-            'Accept': 'application/json',
-            'Content-Type':'application/json'
-          }
-        });
+        let sad = "sad";
       }
-    }else{
-      let sad = "sad";
+      this.setState({checker:true});
     }
-    this.setState({checker:true});
   }
 
   onChange(e){
@@ -83,10 +85,10 @@ class StorySubmit extends Component {
         <div>
           <h1 className="header" id="submitTitle">Continue the Story...</h1>
           <label className="labels">Option Title: </label>
-          <input value= {this.state.optionsBox} onChange = {(e) => this.onChange(e)} id="optionInput" type="text" />
+          <input value= {this.state.optionsBox} onChange = {(e) => this.onChange(e)} id="optionInput" type="text" maxlength="80" />
           <br /><br />
           <label className="labels">Premise: </label>
-          <textarea value={this.state.premiseBox} onChange = {(e) => this.onChange(e)} id="premiseInput" rows="10" cols="75"></textarea>
+          <textarea value={this.state.premiseBox} onChange = {(e) => this.onChange(e)} id="premiseInput" rows="10" cols="75" maxlength="1000"></textarea>
           <br /><br />
           <button onClick={(e) => this.onClick(e)} id="submitButton" type="button" className="buttons">Submit</button>
         </div>
