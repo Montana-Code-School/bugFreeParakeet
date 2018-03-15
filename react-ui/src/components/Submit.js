@@ -63,7 +63,7 @@ class StorySubmit extends Component {
           });
         }
       }else{
-        let sad = "sad";
+        let broken = "try again";
       }
       this.setState({checker:true});
     }
@@ -85,12 +85,12 @@ class StorySubmit extends Component {
         <div>
           <h1 className="header" id="submitTitle">Continue the Story...</h1>
           <label className="labels">Option Title: </label>
-          <input value= {this.state.optionsBox} onChange = {(e) => this.onChange(e)} id="optionInput" type="text" maxlength="80" />
-          <p>Char Limit: 50 Current: {this.state.optionsBox.length}</p>
+          <input value= {this.state.optionsBox} onChange = {(e) => this.onChange(e)} id="optionInput" type="text" maxlength="50" />
+          <p className="count">Character Limit: 50 Current: {this.state.optionsBox.length}</p>
           <br /><br />
           <label className="labels">Premise: </label>
           <textarea value={this.state.premiseBox} onChange = {(e) => this.onChange(e)} id="premiseInput" rows="10" cols="75" maxlength="1000"></textarea>
-          <p>Char Limit: 1000 Current: {this.state.premiseBox.length}</p>
+          <p className="count">Character Limit: 1000 Current: {this.state.premiseBox.length}</p>
           <br /><br />
           <button onClick={(e) => this.onSubmit(e)} id="submitButton" type="button" className="buttons">Submit</button>
         </div>
@@ -101,7 +101,7 @@ class StorySubmit extends Component {
         <div>
           <h1>Successfully Submitted</h1>
           <Link to="/home">
-            <button>Continue</button>
+            <button className="buttons">Continue</button>
           </Link>
         </div>
       );

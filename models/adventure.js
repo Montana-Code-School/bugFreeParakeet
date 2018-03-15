@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
-
+//this is our schema ref page.
 var AdventureSchema   = new Schema({
   storyPremise: String,
   optionOne: String,
