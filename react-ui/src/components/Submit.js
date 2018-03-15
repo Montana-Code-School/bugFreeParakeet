@@ -63,7 +63,7 @@ class StorySubmit extends Component {
           });
         }
       }else{
-        let sad = "sad";
+        let broken = "try again";
       }
       this.setState({checker:true});
     }
@@ -85,7 +85,7 @@ class StorySubmit extends Component {
         <div>
           <h1 className="header" id="submitTitle">Continue the Story...</h1>
           <label className="labels">Option Title: </label>
-          <input value= {this.state.optionsBox} onChange = {(e) => this.onChange(e)} id="optionInput" type="text" maxlength="80" />
+          <input value= {this.state.optionsBox} onChange = {(e) => this.onChange(e)} id="optionInput" type="text" maxlength="50" />
           <p>Char Limit: 50 Current: {this.state.optionsBox.length}</p>
           <br /><br />
           <label className="labels">Premise: </label>

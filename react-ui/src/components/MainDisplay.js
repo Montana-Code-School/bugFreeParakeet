@@ -76,7 +76,6 @@ export default class MainDisplay extends Component {
                   </Link>
                 </div>
               );
-
             }
           }
         });
