@@ -99,7 +99,7 @@ class StorySubmit extends Component {
       return(
         //submit page for api to catch up
         <div>
-          <h1>Successfully Submitted</h1>
+          <h1 className="header">Successfully Submitted</h1>
           <Link to="/home">
             <button className="buttons">Continue</button>
           </Link>

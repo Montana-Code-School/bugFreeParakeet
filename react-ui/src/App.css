@@ -41,13 +41,15 @@ html{
 }
 .labels{
   text-shadow: 2px 0 black, 2px 0 black, 2px 0 black, 0 2px black;
-  font-size: 40px;
+  font-size: 35px;
 }
 .count{
   text-shadow: 1px 0 black, 1px 0 black, 1px 0 black, 0 1px black;
   font-size: 25px;
 }
 button{
+  border-style: solid;
+  border-color: black;
   font-size: 25px;
   border-radius: 50px;
 }

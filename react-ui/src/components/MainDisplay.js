@@ -120,7 +120,6 @@ export default class MainDisplay extends Component {
   BackCaller(e){
     this.goBack(e);
     this.componentDidMount(e);
-
   }
   checkSetter(e){
     this.setState({checker:true});
