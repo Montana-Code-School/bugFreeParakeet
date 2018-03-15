@@ -144,15 +144,16 @@ export default class MainDisplay extends Component {
         return(
           <div>
             {this.state.premise}
-            <button onClick={(e) => this.BackCaller(e)}>Back</button>
+            <button className="buttons" onClick={(e) => this.BackCaller(e)}>Back</button>
           </div>
         );
       }else{
         return(
           <div>
             <h1>Story Ended</h1>
-            <button onClick={(e) => this.checkSetter(e)}>Back</button>
-            <button onClick={(e) => this.checkResetter(e)}>Back to Start</button>
+            <button className="buttons" onClick={(e) => this.checkSetter(e)}>Back</button>
+            <br></br>
+            <button className="buttons" onClick={(e) => this.checkResetter(e)}>Back to Start</button>
           </div>
         );
       }
