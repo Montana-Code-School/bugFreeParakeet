@@ -5,7 +5,7 @@ import Login from './components/Login.js';
 import StorySubmit from './components/Submit.js';
 import ApiTest from './components/ApiTest';
 import MainDisplay from './components/MainDisplay.js';
-
+//parent
 class App extends Component {
   constructor(props){
     super(props);
@@ -28,11 +28,12 @@ class App extends Component {
     this.setState({newValue:value});
   }
   //displays new part of the story when user in mainDisplay clicks on an option
-  updatesNewValue(value){
+  updatesNewValue(value){ //updates the state of newValue in the parent; when you
+    //select option takes you to new option, also used for back button
     this.setState({newValue:value});
   }
   render() {
-    return (
+    return ( //brings in components and routes them to the correct pages
       <Router>
         <div>
           <Route exact path="/" component={Login} />
@@ -44,6 +45,7 @@ class App extends Component {
           )} />
         </div>
       </Router>
+      //
     );
   }
 }

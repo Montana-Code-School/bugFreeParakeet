@@ -1,10 +1,11 @@
-/* laura coded most if not all of this page */
+/*base css*/
 body{
 color: white;
 text-align: center;
 font-family: comic serif;
 font-size: 22px;
 }
+/*background img sized to browser*/
 html{
   background: url("http://getwallpapers.com/wallpaper/full/0/9/f/1071475-gorgerous-funny-cat-desktop-wallpaper-1920x1080.jpg") no-repeat center center fixed;
   -webkit-background-size: cover;
@@ -12,73 +13,100 @@ html{
   -o-background-size: cover;
   background-size: cover;
 }
+/*user inputs story*/
 #premiseInput{
   vertical-align: middle;
   font-size: inherit;
   font-family: inherit;
   font-weight: inherit;
 }
+/*user inputs title*/
 #optionInput{
   height: 25px;
   width: 500px;
   font-size: 20px;
 }
+/*intro story*/
 #premiseText{
   text-shadow: 2px 0 black, 2px 0 black, 2px 0 black, 0 2px black;
   text-align: justify;
   padding: 100px;
-  font-size: 27px;
+  font-size: 30px;
 }
+/*start link*/
 #login{
   font-size: 75px;
 }
+/*all links*/
 .links{
   font-size: 30px;
 }
+/*all headers*/
 .header{
   font-size: 72px;
   text-shadow: 2px 0 black, 2px 0 black, 2px 0 black, 0 2px black;
 }
+/*all labels*/
 .labels{
   text-shadow: 2px 0 black, 2px 0 black, 2px 0 black, 0 2px black;
   font-size: 35px;
 }
+/*character count*/
 .count{
   text-shadow: 1px 0 black, 1px 0 black, 1px 0 black, 0 1px black;
   font-size: 25px;
 }
+/*all buttons*/
 button{
   border-style: solid;
   border-color: black;
   font-size: 25px;
   border-radius: 50px;
 }
+/*base for option links*/
 .mainDisplayOptionText{
   font-size: 30px;
   font-family: comic serif;
   font-weight: bold;
 }
+/*back to start button*/
+#toStart{
+  margin-bottom: 25px;
+}
+/*the end*/
+#theEnd{
+  text-shadow: 2px 0 black, 2px 0 black, 2px 0 black, 0 2px black;
+  font-size: 75px;
+}
+/*color for end link*/
 #mainDisplayEndBranch{
   color: darkred;
 }
+/*color for end link on hover*/
 #mainDisplayEndBranch:hover{
   color: red;
 }
+/*color for add new option link*/
 #mainDisplayAddNewOptionTwo{
   color: #25628D;
 }
+/*color for new option link on hover*/
 #mainDisplayAddNewOptionTwo:hover{
   color: red;
 }
+/*color for add new option link*/
 #mainDisplayAddNewOptionOne{
   color: #25628D;
 }
+/*color for new option link on hover*/
 #mainDisplayAddNewOptionOne:hover{
   color: red;
 }
+/*takes away lines from links*/
 a:link{
   text-decoration: none;
 }
+/*hover for links not covered above*/
 a:hover{
   color: red;
 }
