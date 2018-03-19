@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
-
+//the start page, where the fun begins
+//later could be a login/auth page
 class Login extends Component {
   render() {
     return (

@@ -1,13 +1,14 @@
 import StorySubmit from './Submit.js';
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
-
+//displays premises either options or the add new options
+//or end branch and gives functionality to the corresponding links
 export default class MainDisplay extends Component {
   constructor(props) {
     super(props);
     this.state = {
       premise:"", //intro premise to be pulled from current api object
-      keyValue:"0",
+      keyValue:"0", //equals the id of the obj
       checker: true,
     };
   }
@@ -34,8 +35,8 @@ export default class MainDisplay extends Component {
               return(
                 <div key={adventure.results}>
                   <p id="premiseText"> {adventure.storyPremise}</p>
-                  <p className="mainDisplayOptionText">The End</p>
-                  <button onClick={(e) => this.checkResetter(e)}>Back to Start</button>
+                  <p id="theEnd" className="mainDisplayOptionText">The End</p>
+                  <button id="toStart" onClick={(e) => this.checkResetter(e)}>Back to Start</button>
                 </div>
               );
             }else if(adventure.optionTwo == "" && adventure.optionOne !== ""){
@@ -98,13 +99,13 @@ export default class MainDisplay extends Component {
       this.props.updatesNewValue(newKeyValue);
     } else if (e.target.id == 'mainDisplayEndBranch'){
       fetch(`/api/adventure/${this.props.newNewValue}/endBranch`, {
-        method: 'PUT',
+        method: 'PUT', //checks if end button was clicked
         headers:{
           'Accept': 'application/json',
           'Content-Type':'application/json'
         }
       });
-      this.setState({checker:false});
+      this.setState({checker:false}); //displays story ended
     }
   }
   DoubleCaller(e){
@@ -149,10 +150,11 @@ export default class MainDisplay extends Component {
       }else{
         return(
           <div>
-            <h1>Story Ended</h1>
+            <h1 className="header">Story Ended</h1>
+            <br />
+            <button id="toStart" className="buttons" onClick={(e) => this.checkResetter(e)}>Back to Start</button>
+            <br />
             <button className="buttons" onClick={(e) => this.checkSetter(e)}>Back</button>
-            <br></br>
-            <button className="buttons" onClick={(e) => this.checkResetter(e)}>Back to Start</button>
           </div>
         );
       }
