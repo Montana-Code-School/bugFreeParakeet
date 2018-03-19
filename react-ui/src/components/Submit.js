@@ -26,7 +26,6 @@ class StorySubmit extends Component {
           }
         }
       });
-      return true;
   }
   componentDidMount(){
     //checks to see if submission has already been submitted
