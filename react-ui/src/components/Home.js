@@ -32,7 +32,7 @@ export default class Home extends Component {
     }else{
       return(
         <div>
-          <h1 id="successSub" className="header">Choose Your Adventure</h1>
+          <h1 id="successSub" className="header">Choose Your Adventure!</h1>
           <Link to="/home">
             <button className="button" onClick={(e) => this.storyChooser(e)} id="0">The Empire Strikes Cats</button>
           </Link>
