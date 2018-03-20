@@ -1,18 +1,21 @@
 /*base css*/
+:root{
+  --background: url("./imgs/catBackground2.jpg") no-repeat center center fixed;
+}
 body{
 color: white;
 text-align: center;
 font-family: comic serif;
 font-size: 22px;
+background: var(--background);
+-webkit-background-size: cover;
+-moz-background-size: cover;
+-o-background-size: cover;
+background-size: cover;
 }
 /*background img sized to browser*/
-html{
-  background: url("http://getwallpapers.com/wallpaper/full/0/9/f/1071475-gorgerous-funny-cat-desktop-wallpaper-1920x1080.jpg") no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-}
+
+
 /*user inputs story*/
 #premiseInput{
   vertical-align: middle;

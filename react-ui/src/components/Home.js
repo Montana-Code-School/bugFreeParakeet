@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
+import catBackground from '../imgs/catBackground.jpg';
+import catBackground2 from '../imgs/catBackground2.jpg';
+const body = document.querySelector('body');
 
 export default class Home extends Component {
   constructor(props){
@@ -17,11 +20,15 @@ export default class Home extends Component {
     console.log(this.state.storyVal);
     this.props.updatesNewValue(storyVal);
   }
+  backgroundChanger(e){
+    body.style.setProperty('--background', 'url('+catBackground+')');
+  }
   render(){
     if(this.state.checker == false){
       return(
         <div>
           <h1>Choose Your Adventure</h1>
+          <button onClick={(e) => this.backgroundChanger(e)}>Change Background</button>
           <button onClick={(e) => this.storyChooser(e)} id="0">The Empire Strikes Cats</button>
           <button onClick={(e) => this.storyChooser(e)} id="1">The Fast and the Fur-ious</button>
           <button onClick={(e) => this.storyChooser(e)} id="2">Lord of the Strings</button>
