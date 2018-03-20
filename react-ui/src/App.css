@@ -13,9 +13,11 @@ background: var(--background);
 -o-background-size: cover;
 background-size: cover;
 }
-/*background img sized to browser*/
 
-
+/*Successfully submitted header*/
+#successSub{
+  margin-top: 200px;
+}
 /*user inputs story*/
 #premiseInput{
   vertical-align: middle;
@@ -47,7 +49,7 @@ background-size: cover;
 /*all headers*/
 .header{
   font-size: 72px;
-  text-shadow: 2px 0 black, 2px 0 black, 2px 0 black, 0 2px black;
+  text-shadow: 2px 0 black, 3px 0 black, 2px 0 black, 0 3px black;
 }
 /*all labels*/
 .labels{
@@ -65,6 +67,15 @@ button{
   border-color: black;
   font-size: 25px;
   border-radius: 50px;
+  box-shadow: 2px 3px grey;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  font-weight: ;
+}
+button:hover{
+  background-color: #cc0000;
+  box-shadow: 2px 3px black;
+  font-weight: bold;
 }
 /*base for option links*/
 .mainDisplayOptionText{
@@ -72,9 +83,9 @@ button{
   font-family: comic serif;
   font-weight: bold;
 }
-/*back to start button*/
-#toStart{
-  margin-bottom: 25px;
+/*choose your own adventure*/
+#chooseAdvent{
+  margin-top: 100px;
 }
 /*the end*/
 #theEnd{
@@ -88,6 +99,7 @@ button{
 /*color for end link on hover*/
 #mainDisplayEndBranch:hover{
   color: red;
+  font-weight: bold;
 }
 /*color for add new option link*/
 #mainDisplayAddNewOptionTwo{
@@ -96,6 +108,7 @@ button{
 /*color for new option link on hover*/
 #mainDisplayAddNewOptionTwo:hover{
   color: red;
+  font-weight: bold;
 }
 /*color for add new option link*/
 #mainDisplayAddNewOptionOne{
@@ -104,6 +117,7 @@ button{
 /*color for new option link on hover*/
 #mainDisplayAddNewOptionOne:hover{
   color: red;
+  font-weight: bold;
 }
 /*takes away lines from links*/
 a:link{
@@ -112,4 +126,5 @@ a:link{
 /*hover for links not covered above*/
 a:hover{
   color: red;
+  font-weight: bold;
 }

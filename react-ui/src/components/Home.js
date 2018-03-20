@@ -27,25 +27,31 @@ export default class Home extends Component {
     if(this.state.checker == false){
       return(
         <div>
-          <h1>Choose Your Adventure</h1>
+          <h1 id="successSub" className="header">Choose Your Adventure!</h1>
           <button onClick={(e) => this.backgroundChanger(e)}>Change Background</button>
-          <button onClick={(e) => this.storyChooser(e)} id="0">The Empire Strikes Cats</button>
-          <button onClick={(e) => this.storyChooser(e)} id="1">The Fast and the Fur-ious</button>
-          <button onClick={(e) => this.storyChooser(e)} id="2">Lord of the Strings</button>
+
+          <button className="button" onClick={(e) => this.storyChooser(e)} id="0">The Empire Strikes Cats</button>
+          <br />
+          <button className="button" onClick={(e) => this.storyChooser(e)} id="1">The Fast and the Fur-ious</button>
+          <br />
+          <button className="button" onClick={(e) => this.storyChooser(e)} id="2">Lord of the Strings</button>
+
         </div>
       );
     }else{
       return(
         <div>
-          <h1>Choose Your Adventure</h1>
+          <h1 id="successSub" className="header">Choose Your Adventure</h1>
           <Link to="/home">
-            <button onClick={(e) => this.storyChooser(e)} id="0">The Empire Strikes Cats</button>
+            <button className="button" onClick={(e) => this.storyChooser(e)} id="0">The Empire Strikes Cats</button>
           </Link>
+          <br />
           <Link to="/home">
-            <button onClick={(e) => this.storyChooser(e)} id="1">The Fast and the Fur-ious</button>
+            <button className="button" onClick={(e) => this.storyChooser(e)} id="1">The Fast and the Fur-ious</button>
           </Link>
+          <br />
           <Link to="/home">
-            <button onClick={(e) => this.storyChooser(e)} id="2">Lord of the Strings</button>
+            <button className="button" onClick={(e) => this.storyChooser(e)} id="2">Lord of the Strings</button>
           </Link>
         </div>
       );
