@@ -1,6 +1,9 @@
 import StorySubmit from './Submit.js';
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
+import catBackground2 from '../imgs/catBackground2.jpg';
+const body = document.querySelector('body');
+
 //displays premises either options or the add new options
 //or end branch and gives functionality to the corresponding links
 export default class MainDisplay extends Component {
@@ -131,12 +134,19 @@ export default class MainDisplay extends Component {
     this.setState({checker:true});
     this.componentDidMount(e);
   }
+  backgroundChanger(e){
+    body.style.setProperty('--background', 'url('+catBackground2+') no-repeat center center fixed');
+  }
   render () {
-    if(this.props.newNewValue === "0"){
+    if(this.props.newNewValue.length === 1){
       return (
       //renders this.state.premise
         <div>
           {this.state.premise}
+          <Link to="/test">
+            <button onClick={(e)=>this.backgroundChanger(e)}className="buttons">Back to Story Selection </button>
+          </Link>
+
         </div>
       );
     }else{
