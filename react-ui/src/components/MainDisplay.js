@@ -35,7 +35,7 @@ export default class MainDisplay extends Component {
               return(
                 <div key={adventure.results}>
                   <p id="premiseText"> {adventure.storyPremise}</p>
-                  <p id="theEnd" className="mainDisplayOptionText">The End</p>
+                  <p id="theEnd" className="mainDisplayOptionText">The End.</p>
                   <button id="toStart" onClick={(e) => this.checkResetter(e)}>Back to Start</button>
                 </div>
               );
