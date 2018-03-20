@@ -70,6 +70,7 @@ button{
   margin-bottom: 10px;
   margin-top: 10px;
 }
+/*buttons on hover*/
 button:hover{
   background-color: #cc0000;
   box-shadow: 2px 3px black;
@@ -95,7 +96,7 @@ button:hover{
   color: darkred;
   text-shadow: 1px 0 #f2f2f2, 1px 0 #f2f2f2, 1px 0 #f2f2f2, 0 1px #f2f2f2;
 }
-/*color for end link on hover*/
+/*end link on hover*/
 #mainDisplayEndBranch:hover{
   color: red;
   text-decoration: underline;
@@ -105,7 +106,7 @@ button:hover{
   color: #25628D;
   text-shadow: 1px 0 #f2f2f2, 1px 0 #f2f2f2, 1px 0 #f2f2f2, 0 1px #f2f2f2;
 }
-/*color for new option link on hover*/
+/*new option link on hover*/
 #mainDisplayAddNewOptionTwo:hover{
   color: red;
   text-decoration: underline;
@@ -115,7 +116,7 @@ button:hover{
   color: #25628D;
   text-shadow: 1px 0 #f2f2f2, 1px 0 #f2f2f2, 1px 0 #f2f2f2, 0 1px #f2f2f2;
 }
-/*color for new option link on hover*/
+/*new option link on hover*/
 #mainDisplayAddNewOptionOne:hover{
   color: red;
   text-decoration: underline;
@@ -125,7 +126,7 @@ a:link{
   text-decoration: none;
   text-shadow: 1px 0 #f2f2f2, 1px 0 #f2f2f2, 1px 0 #f2f2f2, 0 1px #f2f2f2;
 }
-/*hover for links not covered above*/
+/*links on hover for links not covered by above ids*/
 a:hover{
   color: red;
   text-decoration: underline;
