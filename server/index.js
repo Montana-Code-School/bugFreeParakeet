@@ -55,13 +55,22 @@ if (cluster.isMaster) {
       adventure.keyValue = body.keyValue;
       adventure.branchEnded = body.branchEnded;
       //error checker
+
       adventure.save(err => {
-        if (err)
+        if (err){
           res.send(err);
-        res.json({
-          message: 'Posted things!'
-        });
+        }else if(err.code == 11000){
+          res.json({
+            isUnique:false
+          });
+        }else{
+          res.json({
+            message: 'Posted things!',
+            isUnique: true,
+          });
+        }
       });
+
     })
     .get((req, res) => {
       Adventure.find((err, adventure) => {
@@ -126,13 +135,17 @@ if (cluster.isMaster) {
       let query = {"keyValue":params.adventure_keyValue};
       let newKeyValue = params.adventure_keyValue + "1"; //newKeyValue that onSubmit is trying to create
       Adventure.findOne({keyValue:newKeyValue}, (err, response)=>{
+        console.log(response);
+        console.log(newKeyValue);
         if (response === null) { //if it doesn't allows to post new option
+          console.log("I work");
           Adventure.findOneAndUpdate(query, {optionOne: params.adventure_optionOne},  (err, adventure) => {
             randBS.json({//yep pretty much
               message: 'Adventure was added for optionOne!'
             });
           });
         }else{
+          console.log("i'm broken");
           let glad = "we did it";
         }
       }); //checks to see if newKeyValue exists
@@ -144,13 +157,17 @@ if (cluster.isMaster) {
       let query = {"keyValue":params.adventure_keyValue};
       let newKeyValue = params.adventure_keyValue + "2"; //newKeyValue that onSubmit is trying to create
       Adventure.findOne({keyValue:newKeyValue}, (err, response)=>{
+        console.log(response);
+        console.log(newKeyValue);
         if (response === null) { //if it doesn't allows to post new option
+          console.log("I work");
           Adventure.findOneAndUpdate(query, {optionTwo: params.adventure_optionTwo},  (err, adventure) => {
             randBS.json({
               message: 'Adventure was added for optionTwo!',
             });
           });
         }else{
+          console.log("i'm broken");
           let gladAgain = "we did it again";
         }
       }); //checks to see if newKeyValue exists
