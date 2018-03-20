@@ -7,7 +7,7 @@ class Login extends Component {
     return (
       <div>
         <h1 id="welcome" className="header">Welcome to The Unending Story!</h1>
-        <Link to="/home">
+        <Link to="/test">
           <br />
           <h3 id="login" className="links">Start</h3>
         </Link>

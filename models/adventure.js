@@ -9,4 +9,5 @@ var AdventureSchema   = new Schema({
   branchEnded: String,
 });
 
+
 module.exports = mongoose.model('Adventure', AdventureSchema);

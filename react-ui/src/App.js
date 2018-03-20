@@ -5,6 +5,7 @@ import Login from './components/Login.js';
 import StorySubmit from './components/Submit.js';
 import ApiTest from './components/ApiTest';
 import MainDisplay from './components/MainDisplay.js';
+import Home from './components/Home.js';
 //parent
 class App extends Component {
   constructor(props){
@@ -36,7 +37,10 @@ class App extends Component {
     return ( //brings in components and routes them to the correct pages
       <Router>
         <div>
-          <Route exact path="/" component={Login} />
+          <Route exact path="/" component={Login}/>
+          <Route exact path="/test" render={(props)=>(
+            <Home updatesNewValue = {this.updatesNewValue} />
+          )} />
           <Route exact path="/home/" render={(props)=>(
             <MainDisplay updatesNewValue={this.updatesNewValue} newNewValue={this.state.newValue} getsValueFromMainDisplay={this.getsValueFromMainDisplay}/>
           )} />

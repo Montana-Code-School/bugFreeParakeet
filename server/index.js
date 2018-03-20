@@ -35,6 +35,7 @@ if (cluster.isMaster) {
   // Answer API requests.
   app.get('/api', function (req, res) {
     res.set('Content-Type', 'application/json');
+
     res.send('{"message":"Hello from the server!"}');
   });
   router.use(function(res, req, next) {
@@ -121,45 +122,39 @@ if (cluster.isMaster) {
     });
   router.route('/adventure/keyValue/:adventure_keyValue/:adventure_optionOne')
     .put(({params, body}, res) => {
+      let randBS = res; //scoping bullshit
       let query = {"keyValue":params.adventure_keyValue};
       let newKeyValue = params.adventure_keyValue + "1"; //newKeyValue that onSubmit is trying to create
       Adventure.findOne({keyValue:newKeyValue}, (err, response)=>{
-        console.log(response);
         if (response === null) { //if it doesn't allows to post new option
-          Adventure.findOneAndUpdate(query, {optionOne: params.adventure_optionOne}, (err, result)=>{
-            result.json({
-              message:'this message doesnt send but still works'
+          Adventure.findOneAndUpdate(query, {optionOne: params.adventure_optionOne},  (err, adventure) => {
+            randBS.json({//yep pretty much
+              message: 'Adventure was added for optionOne!'
             });
           });
-          console.log("hey I'm here");
         }else{
           let glad = "we did it";
         }
       }); //checks to see if newKeyValue exists
-      res.json({
-        message: 'else was added for optionOne!'
-      });
+
     });
   router.route('/adventure/keyValue2/:adventure_keyValue/:adventure_optionTwo')
     .put(({params, body}, res) => {
+      let randBS = res;
       let query = {"keyValue":params.adventure_keyValue};
       let newKeyValue = params.adventure_keyValue + "2"; //newKeyValue that onSubmit is trying to create
       Adventure.findOne({keyValue:newKeyValue}, (err, response)=>{
-        console.log(response);
         if (response === null) { //if it doesn't allows to post new option
-          Adventure.findOneAndUpdate(query, {optionTwo: params.adventure_optionTwo}, (err, result)=>{
-            result.json({
-              message:'this message doesnt send but still works'
+          Adventure.findOneAndUpdate(query, {optionTwo: params.adventure_optionTwo},  (err, adventure) => {
+            randBS.json({
+              message: 'Adventure was added for optionTwo!',
             });
           });
-          console.log("hey I'm over here");
         }else{
           let gladAgain = "we did it again";
         }
       }); //checks to see if newKeyValue exists
-      res.json({
-        message: 'else was added for optionTwo!'
-      });
+
     });
   router.route('/adventure/:adventure_keyValue/reset')
     .put(({params, body}, res) => {
