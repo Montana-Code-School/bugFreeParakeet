@@ -59,10 +59,6 @@ if (cluster.isMaster) {
       adventure.save(err => {
         if (err){
           res.send(err);
-        }else if(err.code == 11000){
-          res.json({
-            isUnique:false
-          });
         }else{
           res.json({
             message: 'Posted things!',
