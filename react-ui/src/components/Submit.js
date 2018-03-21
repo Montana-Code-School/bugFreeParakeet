@@ -98,7 +98,7 @@ class StorySubmit extends Component {
           <textarea value={this.state.premiseBox} onChange = {(e) => this.onChange(e)} id="premiseInput" rows="10" cols="75" maxlength="1000"></textarea>
           <p className="count">Character Limit: 1000 Current: {this.state.premiseBox.length}</p>
           <br />
-          <button onMouseEnter={(e) => this.onHover(e)} onClick={(e) => this.onSubmit(e)} id="submitButton" type="button" className="buttons">Submit</button>
+          <button onMouseEnter={(e) => this.onHover(e)} onClick={(e) => this.onSubmit(e)} id="submitButton" type="button" className="button">Submit</button>
         </div>
       );
     }else if(this.state.checker === true){
@@ -107,7 +107,7 @@ class StorySubmit extends Component {
         <div>
           <h1 className="header" id="successSub">Successfully Submitted</h1>
           <Link to="/home">
-            <button className="buttons">Continue</button>
+            <button className="button">Continue</button>
           </Link>
         </div>
       );

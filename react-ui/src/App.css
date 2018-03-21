@@ -13,8 +13,6 @@ background: var(--background);
 -o-background-size: cover;
 background-size: cover;
 }
-
-
 /*Successfully submitted header*/
 #successSub{
   margin-top: 200px;
@@ -43,10 +41,6 @@ background-size: cover;
 #login{
   font-size: 75px;
 }
-/*all links*/
-.links{
-  font-size: 30px;
-}
 /*all headers*/
 .header{
   font-size: 72px;
@@ -62,7 +56,7 @@ background-size: cover;
   text-shadow: 1px 0 black, 1px 0 black, 1px 0 black, 0 1px black;
   font-size: 25px;
 }
-/*all buttons*/
+/*base of all buttons*/
 button{
   border-style: solid;
   border-color: black;
@@ -71,12 +65,19 @@ button{
   box-shadow: 2px 3px grey;
   margin-bottom: 10px;
   margin-top: 10px;
-  font-weight: ;
+  text-align: center;
+  cursor: pointer;
+  padding: 2px 10px 2px 10px;
 }
+/*when hovering over button*/
 button:hover{
   background-color: #cc0000;
   box-shadow: 2px 3px black;
   font-weight: bold;
+}
+/*push down animation*/
+button:active{
+  transform: translateY(8px);
 }
 /*base for option links*/
 .mainDisplayOptionText{
@@ -93,13 +94,21 @@ button:hover{
   text-shadow: 2px 0 black, 2px 0 black, 2px 0 black, 0 2px black;
   font-size: 75px;
 }
-/*color for end link*/
+/*back to story Selection*/
+#backToStorySelect{
+  background-color: #ffff00;
+}
+#backToStorySelect:hover{
+  background-color: yellow;
+}
+/*color for end button*/
 #mainDisplayEndBranch{
   color: darkred;
 }
-/*color for end link on hover*/
+/*color for end button on hover*/
 #mainDisplayEndBranch:hover{
-  color: red;
+  color: white;
+  background-color: grey;
   font-weight: bold;
 }
 /*color for add new option link*/
@@ -108,7 +117,8 @@ button:hover{
 }
 /*color for new option link on hover*/
 #mainDisplayAddNewOptionTwo:hover{
-  color: red;
+  color: black;
+  background-color: lightgreen;
   font-weight: bold;
 }
 /*color for add new option link*/
@@ -117,15 +127,7 @@ button:hover{
 }
 /*color for new option link on hover*/
 #mainDisplayAddNewOptionOne:hover{
-  color: red;
-  font-weight: bold;
-}
-/*takes away lines from links*/
-a:link{
-  text-decoration: none;
-}
-/*hover for links not covered above*/
-a:hover{
-  color: red;
+  color: black;
+  background-color: lightblue;
   font-weight: bold;
 }

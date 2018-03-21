@@ -38,19 +38,20 @@ export default class MainDisplay extends Component {
               return(
                 <div key={adventure.results}>
                   <p id="premiseText"> {adventure.storyPremise}</p>
-                  <p id="theEnd" className="mainDisplayOptionText">The End.</p>
-                  <button id="toStart" onClick={(e) => this.checkResetter(e)}>Back to Start</button>
+                  <p id="theEnd" className="theEnd">The End.</p>
+                  <button id="toStart" className="button" onClick={(e) => this.checkResetter(e)}>Back to Start</button>
                 </div>
               );
             }else if(adventure.optionTwo == "" && adventure.optionOne !== ""){
               return(
                 <div key={adventure.results}>
                   <p id="premiseText"> {adventure.storyPremise}</p>
-                  <Link to="/home" id="mainDisplayOptionOne">
-                    <p className="mainDisplayOptionText" id="mainDisplayOptionOne" onClick={(e) => this.DoubleCaller(e)}>{adventure.optionOne}</p>
+                  <Link to="/home">
+                    <button className="button" id="mainDisplayOptionOne" onClick={(e) => this.DoubleCaller(e)}>{adventure.optionOne}</button>
                   </Link>
-                  <Link to="/submit" id="mainDisplayAddNewOptionTwo">
-                    <p className="mainDisplayOptionText" id="mainDisplayAddNewOptionTwo"  onClick={(e) => this.onClick(e)}> Add New Option </p>
+                  <br />
+                  <Link to="/submit">
+                    <button className="button" id="mainDisplayAddNewOptionTwo"  onClick={(e) => this.onClick(e)}> Add New Option </button>
                   </Link>
                 </div>
               );
@@ -59,12 +60,13 @@ export default class MainDisplay extends Component {
                 <div key={adventure.results}>
                   <p id="premiseText"> {adventure.storyPremise}</p>
                   <div>
-                    <Link to="/home" id="mainDisplayOptionOne" className="Links">
-                      <p className="mainDisplayOptionText" id="mainDisplayOptionOne"  onClick={(e) => this.DoubleCaller(e)}>{adventure.optionOne}</p>
+                    <Link to="/home" className="Links">
+                      <button className="button" id="mainDisplayOptionOne"  onClick={(e) => this.DoubleCaller(e)}>{adventure.optionOne}</button>
                     </Link>
+                    <br />
                   </div>
-                  <Link to="/home" id="mainDisplayOptionTwo">
-                    <p className="mainDisplayOptionText" id="mainDisplayOptionTwo"  onClick={(e) => this.DoubleCaller(e)}>{adventure.optionTwo}</p>
+                  <Link to="/home">
+                    <button className="button" id="mainDisplayOptionTwo"  onClick={(e) => this.DoubleCaller(e)}>{adventure.optionTwo}</button>
                   </Link>
                 </div>
               );
@@ -72,11 +74,12 @@ export default class MainDisplay extends Component {
               return(
                 <div key={adventure.results}>
                   <p id="premiseText"> {adventure.storyPremise}</p>
-                  <Link to="/submit" id="mainDisplayAddNewOptionOne">
-                    <p className="mainDisplayOptionText" id="mainDisplayAddNewOptionOne"  onClick={(e) => this.onClick(e)}> Add New Option </p>
+                  <Link to="/submit">
+                    <button className="button" id="mainDisplayAddNewOptionOne"  onClick={(e) => this.onClick(e)}> Add New Option </button>
                   </Link>
-                  <Link to ="/home" id="mainDisplayEndBranch">
-                    <p className="mainDisplayOptionText" id="mainDisplayEndBranch" onClick={(e) => this.onClick(e)}> End the Story </p>
+                  <br />
+                  <Link to ="/home"s>
+                    <button className="button" id="mainDisplayEndBranch" onClick={(e) => this.onClick(e)}> End the Story </button>
                   </Link>
                 </div>
               );
@@ -144,7 +147,7 @@ export default class MainDisplay extends Component {
         <div>
           {this.state.premise}
           <Link to="/test">
-            <button onClick={(e)=>this.backgroundChanger(e)}className="buttons">Back to Story Selection </button>
+            <button onClick={(e)=>this.backgroundChanger(e)} id="backToStorySelect" className="button">Back to Story Selection </button>
           </Link>
 
         </div>
@@ -154,7 +157,7 @@ export default class MainDisplay extends Component {
         return(
           <div>
             {this.state.premise}
-            <button className="buttons" onClick={(e) => this.BackCaller(e)}>Back</button>
+            <button className="button" onClick={(e) => this.BackCaller(e)}>Back</button>
           </div>
         );
       }else{
@@ -162,9 +165,9 @@ export default class MainDisplay extends Component {
           <div>
             <h1 className="header">Story Ended</h1>
             <br />
-            <button id="toStart" className="buttons" onClick={(e) => this.checkResetter(e)}>Back to Start</button>
+            <button id="toStart" className="button" onClick={(e) => this.checkResetter(e)}>Back to Start</button>
             <br />
-            <button className="buttons" onClick={(e) => this.checkSetter(e)}>Back</button>
+            <button className="button" onClick={(e) => this.checkSetter(e)}>Back</button>
           </div>
         );
       }

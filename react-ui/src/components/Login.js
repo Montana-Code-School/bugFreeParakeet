@@ -9,7 +9,7 @@ class Login extends Component {
         <h1 id="welcome" className="header">Welcome to The Unending Story!</h1>
         <Link to="/test">
           <br />
-          <h3 id="login" className="links">Start</h3>
+          <h3 id="login" className="button">Start</h3>
         </Link>
       </div>
     );
