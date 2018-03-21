@@ -1,7 +1,7 @@
 import StorySubmit from './Submit.js';
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
-import catBackground2 from '../imgs/catBackground2.jpg';
+import catBackground2 from '../imgs/adventureBeginning.png';
 const body = document.querySelector('body');
 
 //displays premises either options or the add new options

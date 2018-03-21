@@ -1,6 +1,6 @@
 /*base css*/
 :root{
-  --background: url("./imgs/catBackground2.jpg") no-repeat center center fixed;
+  --background: url('./imgs/adventureBeginning.png') no-repeat center center fixed;
 }
 body{
 color: white;

@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
-import catBackground from '../imgs/catBackground.jpg';
+import catBackground from '../imgs/adventureEgypt2.jpg';
 import catBackground2 from '../imgs/catBackground2.jpg';
-import catBackground3 from '../imgs/catBackground3.jpg';
-import catBackground4 from '../imgs/catBackground4.jpg';
+import catBackground3 from '../imgs/adventureAmazon.jpg';
+import catBackground4 from '../imgs/adventureUnderwater.jpg';
+
 const body = document.querySelector('body');
 
 export default class Home extends Component {
@@ -40,17 +41,18 @@ export default class Home extends Component {
     if(this.state.checker == false){
       return(
         <div>
-          <h1 id="successSub" className="header">Choose Your Adventure!</h1>
+          <h1 id="successSub" className="header">Choose Your Adventure!</h1>    
+          <br />
           <Link to="/home">
-            <button className="button" onMouseEnter={(e) => this.storyChooser(e)} onClick={(e)=>this.changeBackground(e)} id="0">The Empire Strikes Cats</button>
+            <button className="button" onMouseEnter={(e) => this.storyChooser(e)} onClick={(e)=>this.changeBackground(e)} id="1">Adventure in the Amazon</button>
           </Link>
           <br />
           <Link to="/home">
-            <button className="button" onMouseEnter={(e) => this.storyChooser(e)} onClick={(e)=>this.changeBackground(e)} id="1">The Fast and the Fur-ious</button>
+            <button className="button" onMouseEnter={(e) => this.storyChooser(e)} onClick={(e)=>this.changeBackground(e)} id="0">Adventure in Egypt</button>
           </Link>
           <br />
           <Link to="/home">
-            <button className="button" onMouseEnter={(e) => this.storyChooser(e)} onClick={(e)=>this.changeBackground(e)} id="2">Lord of the Strings</button>
+            <button className="button" onMouseEnter={(e) => this.storyChooser(e)} onClick={(e)=>this.changeBackground(e)} id="2">Adventure Underwater</button>
           </Link>
 
 
