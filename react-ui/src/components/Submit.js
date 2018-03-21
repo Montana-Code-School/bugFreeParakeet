@@ -28,29 +28,30 @@ class StorySubmit extends Component {
     //   });
   }
   onSubmit(e){ //function for submit button
-    if(this.state.optionsBox.length !== 0 && this.state.premiseBox.length !== 0 && this.state.optionsBox[0] !== " " && this.state.premiseBox[0] !== " ") {
-      //if theres text in optionsBox and premiseBox then continue
-      //stringShortener brought in from helper.js
-      let keyValue = this.props.keyValue;
-      this.props.getsValueFromSubmit(keyValue);//this.props.keyValue comes from mainDisplay
-      //and determines what new page will be displayed
+    if(this.state.optionsBox.length !== 0 && this.state.premiseBox.length !== 0 && this.state.optionsBox[0] !== " " && this.state.premiseBox[0] !== " ")
+      if(this.state.optionsBox.length !== 0 && this.state.premiseBox.length !== 0 && this.state.optionsBox[0] !== "." && this.state.premiseBox[0] !== ".") {
+        //if theres text in optionsBox and premiseBox then continue
+        //stringShortener brought in from helper.js
+        let keyValue = this.props.keyValue;
+        this.props.getsValueFromSubmit(keyValue);//this.props.keyValue comes from mainDisplay
+        //and determines what new page will be displayed
 
-      fetch('/api/adventure', {
-        method: 'POST',
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify ({
-          storyPremise: this.state.premiseBox, //user submitted premise
-          optionOne: "", //link for option one, starts empty
-          optionTwo: "", //link for option two, starts empty
-          keyValue: this.props.keyValue, //posts updated keyValue from mainDisplay
-        })
-      });
+        fetch('/api/adventure', {
+          method: 'POST',
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify ({
+            storyPremise: this.state.premiseBox, //user submitted premise
+            optionOne: "", //link for option one, starts empty
+            optionTwo: "", //link for option two, starts empty
+            keyValue: this.props.keyValue, //posts updated keyValue from mainDisplay
+          })
+        });
 
-      this.setState({checker:true}); //displays Successfully submitted when true
-    }
+        this.setState({checker:true}); //displays Successfully submitted when true
+      }
   }
   onHover(e){
     let ogValue = stringShortener(this.props.keyValue);
