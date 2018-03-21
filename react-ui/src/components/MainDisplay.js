@@ -146,7 +146,7 @@ export default class MainDisplay extends Component {
       //renders this.state.premise
         <div>
           {this.state.premise}
-          <Link to="/test">
+          <Link to="/">
             <button onClick={(e)=>this.backgroundChanger(e)} id="backToStorySelect" className="button">Back to Story Selection </button>
           </Link>
 
