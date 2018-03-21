@@ -6,8 +6,7 @@ import StorySubmit from './components/Submit.js';
 import ApiTest from './components/ApiTest';
 import MainDisplay from './components/MainDisplay.js';
 import Home from './components/Home.js';
-import catBackground from './imgs/catBackground.jpg';
-import catBackground2 from './imgs/catBackground2.jpg';
+
 //parent
 class App extends Component {
   constructor(props){

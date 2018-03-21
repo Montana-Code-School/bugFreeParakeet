@@ -13,7 +13,6 @@ background: var(--background);
 -o-background-size: cover;
 background-size: cover;
 }
-#mainDisplayEndBranch
 /*Successfully submitted header*/
 #successSub{
   margin-top: 200px;

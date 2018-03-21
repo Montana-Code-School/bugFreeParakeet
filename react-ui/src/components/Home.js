@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
 import catBackground from '../imgs/adventureEgypt2.jpg';
-import catBackground2 from '../imgs/catBackground2.jpg';
 import catBackground3 from '../imgs/adventureAmazon.jpg';
 import catBackground4 from '../imgs/adventureUnderwater.jpg';
 
@@ -41,7 +40,7 @@ export default class Home extends Component {
     if(this.state.checker == false){
       return(
         <div>
-          <h1 id="successSub" className="header">Choose Your Adventure!</h1>    
+          <h1 id="successSub" className="header">Choose Your Adventure!</h1>
           <br />
           <Link to="/home">
             <button className="button" onMouseEnter={(e) => this.storyChooser(e)} onClick={(e)=>this.changeBackground(e)} id="1">Adventure in the Amazon</button>
