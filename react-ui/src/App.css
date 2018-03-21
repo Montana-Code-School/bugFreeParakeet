@@ -17,6 +17,19 @@ background-size: cover;
 #successSub{
   margin-top: 200px;
 }
+/*individual adventure buttons*/
+.egyptButton{
+  color: white;
+  background-color: #ff9933;
+}
+.waterButton{
+  color: white;
+  background-color: #3366ff;
+}
+.amazonButton{
+  color: white;
+  background-color: #00cc00;
+}
 /*user inputs story*/
 #premiseInput{
   vertical-align: middle;
@@ -99,7 +112,7 @@ button:active{
   background-color: #ffff00;
 }
 #backToStorySelect:hover{
-  background-color: yellow;
+  background-color: #ff9900;
 }
 /*color for end button*/
 #mainDisplayEndBranch{

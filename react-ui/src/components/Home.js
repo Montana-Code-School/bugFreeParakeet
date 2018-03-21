@@ -12,7 +12,6 @@ export default class Home extends Component {
     super(props);
     this.state = {
       storyVal : "0",
-      checker : false,
     };
   }
   storyChooser(e){
@@ -38,44 +37,22 @@ export default class Home extends Component {
 
   }
   render(){
-    if(this.state.checker == false){
-      return(
-        <div>
-          <h1 id="successSub" className="header">Choose Your Adventure!</h1>
-          <br />
-          <Link to="/home">
-            <button className="button" onMouseEnter={(e) => this.storyChooser(e)} onClick={(e)=>this.changeBackground(e)} id="1">Adventure in the Amazon</button>
-          </Link>
-          <br />
-          <Link to="/home">
-            <button className="button" onMouseEnter={(e) => this.storyChooser(e)} onClick={(e)=>this.changeBackground(e)} id="0">Adventure in Egypt</button>
-          </Link>
-          <br />
-          <Link to="/home">
-            <button className="button" onMouseEnter={(e) => this.storyChooser(e)} onClick={(e)=>this.changeBackground(e)} id="2">Adventure Underwater</button>
-          </Link>
-
-
-        </div>
-      );
-    }else{
-      return(
-        <div>
-          <h1 id="successSub" className="header">Choose Your Adventure</h1>
-          <Link to="/home">
-            <button className="button" onClick={(e) => this.changeBackground(e)} id="0">The Empire Strikes Cats</button>
-          </Link>
-          <br />
-          <Link to="/home">
-            <button className="button" onClick={(e) => this.changeBackground(e)} id="1">The Fast and the Fur-ious</button>
-          </Link>
-          <br />
-          <Link to="/home">
-            <button className="button" onClick={(e) => this.changeBackground(e)} id="2">Lord of the Strings</button>
-          </Link>
-        </div>
-      );
-    }
+    return(
+      <div>
+        <h1 id="successSub" className="header">Choose Your Adventure!</h1>
+        <br />
+        <Link to="/home">
+          <button className="amazonButton" onMouseEnter={(e) => this.storyChooser(e)} onClick={(e)=>this.changeBackground(e)} id="1">Adventure in the Amazon</button>
+        </Link>
+        <br />
+        <Link to="/home">
+          <button className="egyptButton" onMouseEnter={(e) => this.storyChooser(e)} onClick={(e)=>this.changeBackground(e)} id="0">Adventure in Egypt</button>
+        </Link>
+        <br />
+        <Link to="/home">
+          <button className="waterButton" onMouseEnter={(e) => this.storyChooser(e)} onClick={(e)=>this.changeBackground(e)} id="2">Adventure Underwater</button>
+        </Link>
+      </div>
+    );
   }
-
 }
