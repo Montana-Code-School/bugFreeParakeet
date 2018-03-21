@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
-import Login from './components/Login.js';
 import StorySubmit from './components/Submit.js';
 import ApiTest from './components/ApiTest';
 import MainDisplay from './components/MainDisplay.js';
@@ -38,8 +37,7 @@ class App extends Component {
     return ( //brings in components and routes them to the correct pages
       <Router>
         <div>
-          <Route exact path="/" component={Login}/>
-          <Route exact path="/test" render={(props)=>(
+          <Route exact path="/" render={(props)=>(
             <Home updatesNewValue = {this.updatesNewValue} />
           )} />
           <Route exact path="/home/" render={(props)=>(
