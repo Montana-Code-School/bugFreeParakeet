@@ -35,7 +35,6 @@ if (cluster.isMaster) {
   // Answer API requests.
   app.get('/api', function (req, res) {
     res.set('Content-Type', 'application/json');
-
     res.send('{"message":"Hello from the server!"}');
   });
   router.use(function(res, req, next) {
@@ -55,7 +54,6 @@ if (cluster.isMaster) {
       adventure.keyValue = body.keyValue;
       adventure.branchEnded = body.branchEnded;
       //error checker
-
       adventure.save(err => {
         if (err){
           res.send(err);
@@ -66,13 +64,11 @@ if (cluster.isMaster) {
           });
         }
       });
-
     })
     .get((req, res) => {
       Adventure.find((err, adventure) => {
         if (err)
           res.send(err);
-
         res.json(adventure);
       });
     })
@@ -145,7 +141,6 @@ if (cluster.isMaster) {
           let glad = "we did it";
         }
       }); //checks to see if newKeyValue exists
-
     });
   router.route('/adventure/keyValue2/:adventure_keyValue/:adventure_optionTwo')
     .put(({params, body}, res) => {
@@ -167,7 +162,6 @@ if (cluster.isMaster) {
           let gladAgain = "we did it again";
         }
       }); //checks to see if newKeyValue exists
-
     });
   router.route('/adventure/:adventure_keyValue/reset')
     .put(({params, body}, res) => {

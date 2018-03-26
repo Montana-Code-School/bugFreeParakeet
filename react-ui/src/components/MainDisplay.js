@@ -39,7 +39,12 @@ export default class MainDisplay extends Component {
                 <div key={adventure.results}>
                   <p id="premiseText"> {adventure.storyPremise}</p>
                   <p id="theEnd" className="theEnd">The End.</p>
-                  <button id="toStart" className="button" onClick={(e) => this.checkResetter(e)}>Back to Start</button>
+                  <button
+                    id="toStart"
+                    className="button"
+                    onClick={(e) => this.checkResetter(e)}>
+                    Back to Start
+                  </button>
                 </div>
               );
             }else if(adventure.optionTwo == "" && adventure.optionOne !== ""){
@@ -47,11 +52,18 @@ export default class MainDisplay extends Component {
                 <div key={adventure.results}>
                   <p id="premiseText"> {adventure.storyPremise}</p>
                   <Link to="/home">
-                    <button className="button" id="mainDisplayOptionOne" onClick={(e) => this.DoubleCaller(e)}>{adventure.optionOne}</button>
+                    <button className="button" id="mainDisplayOptionOne"
+                      onClick={(e) => this.DoubleCaller(e)}>{adventure.optionOne}
+                    </button>
                   </Link>
                   <br />
                   <Link to="/submit">
-                    <button className="button" id="mainDisplayAddNewOptionTwo"  onClick={(e) => this.onClick(e)}> Add New Option </button>
+                    <button
+                      className="button"
+                      id="mainDisplayAddNewOptionTwo"
+                      onClick={(e) => this.onClick(e)}>
+                      Add New Option
+                    </button>
                   </Link>
                 </div>
               );
@@ -61,12 +73,20 @@ export default class MainDisplay extends Component {
                   <p id="premiseText"> {adventure.storyPremise}</p>
                   <div>
                     <Link to="/home" className="Links">
-                      <button className="button" id="mainDisplayOptionOne"  onClick={(e) => this.DoubleCaller(e)}>{adventure.optionOne}</button>
+                      <button
+                        className="button"
+                        id="mainDisplayOptionOne"
+                        onClick={(e) => this.DoubleCaller(e)}>{adventure.optionOne}
+                      </button>
                     </Link>
                     <br />
                   </div>
                   <Link to="/home">
-                    <button className="button" id="mainDisplayOptionTwo"  onClick={(e) => this.DoubleCaller(e)}>{adventure.optionTwo}</button>
+                    <button
+                      className="button"
+                      id="mainDisplayOptionTwo"
+                      onClick={(e) => this.DoubleCaller(e)}>{adventure.optionTwo}
+                    </button>
                   </Link>
                 </div>
               );
@@ -75,11 +95,21 @@ export default class MainDisplay extends Component {
                 <div key={adventure.results}>
                   <p id="premiseText"> {adventure.storyPremise}</p>
                   <Link to="/submit">
-                    <button className="button" id="mainDisplayAddNewOptionOne"  onClick={(e) => this.onClick(e)}> Add New Option </button>
+                    <button
+                      className="button"
+                      id="mainDisplayAddNewOptionOne"
+                      onClick={(e) => this.onClick(e)}>
+                      Add New Option
+                    </button>
                   </Link>
                   <br />
                   <Link to ="/home"s>
-                    <button className="button" id="mainDisplayEndBranch" onClick={(e) => this.onClick(e)}> End the Story </button>
+                    <button
+                      className="button"
+                      id="mainDisplayEndBranch"
+                      onClick={(e) => this.onClick(e)}>
+                      End the Story
+                    </button>
                   </Link>
                 </div>
               );
@@ -133,12 +163,13 @@ export default class MainDisplay extends Component {
     this.componentDidMount(e);
   }
   checkResetter(e){
-    this.props.updatesNewValue("0");
+    this.props.updatesNewValue(this.props.newNewValue[0]);
     this.setState({checker:true});
     this.componentDidMount(e);
   }
   backgroundChanger(e){
-    body.style.setProperty('--background', 'url('+catBackground2+') no-repeat center center fixed');
+    body.style.setProperty('--background',
+      'url('+catBackground2+') no-repeat center center fixed');
   }
   render () {
     if(this.props.newNewValue.length === 1){
@@ -147,9 +178,13 @@ export default class MainDisplay extends Component {
         <div>
           {this.state.premise}
           <Link to="/">
-            <button onClick={(e)=>this.backgroundChanger(e)} id="backToStorySelect" className="button">Back to Story Selection </button>
+            <button
+              onClick={(e)=>this.backgroundChanger(e)}
+              id="backToStorySelect"
+              className="button">
+              Back to Story Selection
+            </button>
           </Link>
-
         </div>
       );
     }else{
@@ -157,7 +192,11 @@ export default class MainDisplay extends Component {
         return(
           <div>
             {this.state.premise}
-            <button className="button" onClick={(e) => this.BackCaller(e)}>Back</button>
+            <button
+              className="button"
+              onClick={(e) => this.BackCaller(e)}>
+              Back
+            </button>
           </div>
         );
       }else{
@@ -165,9 +204,18 @@ export default class MainDisplay extends Component {
           <div>
             <h1 className="header">Story Ended</h1>
             <br />
-            <button id="toStart" className="button" onClick={(e) => this.checkResetter(e)}>Back to Start</button>
+            <button
+              id="toStart"
+              className="button"
+              onClick={(e) => this.checkResetter(e)}>
+              Back to Start
+            </button>
             <br />
-            <button className="button" onClick={(e) => this.checkSetter(e)}>Back</button>
+            <button
+              className="button"
+              onClick={(e) => this.checkSetter(e)}>
+              Back
+            </button>
           </div>
         );
       }

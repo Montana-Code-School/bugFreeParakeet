@@ -1,5 +1,3 @@
-
-
 function stringShortener(string){
   //knocks the last Character off of a string
   //helps to correctly submit option in submit.js

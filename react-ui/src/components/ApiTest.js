@@ -8,7 +8,6 @@ export default class ApiTest extends Component {
       fetching: true
     };
   }
-
   componentDidMount() {
     fetch('/api')
       .then(response => {
@@ -29,7 +28,6 @@ export default class ApiTest extends Component {
         });
       });
   }
-
   render() {
     return (
       <div className="App">
